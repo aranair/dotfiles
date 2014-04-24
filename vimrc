@@ -34,6 +34,11 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
+set incsearch             " But do highlight as you type your search.
+set ignorecase            " Make searches case-insensitive.
+set ruler                 " Always show info along bottom."
+set laststatus=2          " last window always has a statusline"
+set smarttab              " use tabs at the start of a line, spaces elsewhere"
 
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
