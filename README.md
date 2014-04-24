@@ -14,4 +14,7 @@
 
    To install from command line: `vim +PluginInstall +qall`
 
-4. Profit!!!
+4. Install Ack
+
+
+5. Profit!!!
