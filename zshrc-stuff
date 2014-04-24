@@ -1,0 +1,13 @@
+alias gs="git status"
+alias gb="git branch"
+alias gc="git checkout $1"
+alias gcb="git checkout -b $1"
+alias gcm="git commit -m $1"
+alias gpo="git push origin $1"
+alias gph="git push heroku $1"
+alias stree='open -a SourceTree'
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+ZSH_THEME="af-magic"
