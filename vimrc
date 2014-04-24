@@ -34,6 +34,10 @@ set shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
 
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_bold = "1"
+
 nnoremap j gj
 nnoremap k gk
 
@@ -41,6 +45,26 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-f> :Ack 
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
+nnoremap <Leader>w :w<CR>
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+" Copy paste with <Space>y/p
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
