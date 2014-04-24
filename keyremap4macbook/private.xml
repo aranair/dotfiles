@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Command_R + A</name>
+    <appendix>command_r plus a</appendix>
+    <identifier>commandrplusa</identifier>
+    <autogen>
+       __KeyToKey__
+      KeyCode::A, ModifierFlag::COMMAND_R,
+      KeyCode::CURSOR_LEFT
+    </autogen>
+  </item>
+   <item>
+    <name>Command_R + w</name>
+    <appendix>command_r plus w</appendix>
+    <identifier>commandrplusw</identifier>
+    <autogen>
+       __KeyToKey__
+      KeyCode::W, ModifierFlag::COMMAND_R,
+      KeyCode::CURSOR_UP
+    </autogen>
+  </item>
+   <item>
+    <name>Command_R + s</name>
+    <appendix>command_r plus s</appendix>
+    <identifier>commandrpluss</identifier>
+    <autogen>
+       __KeyToKey__
+      KeyCode::S, ModifierFlag::COMMAND_R,
+      KeyCode::CURSOR_DOWN
+    </autogen>
+  </item>
+   <item>
+    <name>Command_R + d</name>
+    <appendix>command_r plus d</appendix>
+    <identifier>commandrplusd</identifier>
+    <autogen>
+       __KeyToKey__
+      KeyCode::D, ModifierFlag::COMMAND_R,
+      KeyCode::CURSOR_RIGHT
+    </autogen>
+  </item>
+
+   <item>
+    <name>Command_R + [</name>
+    <appendix>HOME</appendix>
+    <identifier>commandrplus[</identifier>
+    <autogen>
+       __KeyToKey__
+      KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_R,
+      KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L
+    </autogen>
+  </item>
+   <item>
+    <name>Command_R + '</name>
+    <appendix>END</appendix>
+    <identifier>commandrplus'</identifier>
+    <autogen>
+       __KeyToKey__
+      KeyCode::QUOTE, ModifierFlag::COMMAND_R,
+      KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L
+    </autogen>
+  </item>
+</root>
