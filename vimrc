@@ -52,6 +52,8 @@ map <C-f> :Ack
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>e :wq<CR>
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
