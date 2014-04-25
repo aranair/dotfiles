@@ -39,6 +39,7 @@ set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom."
 set laststatus=2          " last window always has a statusline"
 set smarttab              " use tabs at the start of a line, spaces elsewhere"
+set smartindent
 
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -54,6 +55,8 @@ map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :wq<CR>
+nnoremap <CR> G
+nnoremap <BS> gg
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
