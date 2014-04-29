@@ -33,5 +33,16 @@ function gh() {
   open $giturl
 }
 
+# Opens the github page for current git repo and compares it -> for a new PR.
+function newpr() {
+  giturl=$(git config --get remote.origin.url)
+  giturl=${giturl/git\@github\.com\:/https://github.com/}
+  giturl=${giturl/\.git/\/compare/}
+  branch="$(git rev-parse --abbrev-ref HEAD)" ||
+  branch="(unnamed branch)"     # detached HEAD
+  branch=${branch##refs/heads/}
+  giturl=$giturl$branch
+  open $giturl
+}
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
