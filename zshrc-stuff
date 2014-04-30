@@ -15,6 +15,7 @@ alias stree='open -a SourceTree .'
 alias tsu="cd ~/Projects/tsubasa"
 alias caba="cd ~/Projects/carebear"
 alias hot="cd ~/Projects/hoteru"
+alias be="bundle exec"
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
