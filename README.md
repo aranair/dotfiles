@@ -6,7 +6,7 @@
 
 2. Symlink vimrc file
 
-    `ln -s ~/dotfiles/vimrc ~/.vimrc`
+    `ln -s ~/dotfiles/vimrc ~/.vimrc` or just update your ~/.vimrc file
     
 3. Install Plugins:
 
