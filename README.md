@@ -25,7 +25,7 @@
    ```
 
 6. Put solarized colors into ~/.vim/colors
-7. 
+ 
    `cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/`
 
 7. Profit!!!
