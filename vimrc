@@ -15,7 +15,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'L9'
-Plugin 'vim-scripts/gitignore'
+Plugin 'rking/ag.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,7 +49,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :Ack 
+map <C-f> :Ag 
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>
