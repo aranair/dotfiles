@@ -24,7 +24,10 @@
    export LC_ALL=en_US.UTF-8
    ```
 
-6. Profit!!!
+6. Put solarized colors into ~/.vim/colors
+   `cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/`
+
+7. Profit!!!
 
 ## Sample Commands
 
