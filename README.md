@@ -5,21 +5,24 @@
    `$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
 2. Symlink vimrc file
-
-    - `git clone git@github.com:aranair/dotfiles.git ~/dotfiles`
-    - `ln -s ~/dotfiles/vimrc ~/.vimrc` 
-    - alternatively, just update your ~/.vimrc file
-    
+    * `git clone git@github.com:aranair/dotfiles.git ~/dotfiles`
+    * `ln -s ~/dotfiles/vimrc ~/.vimrc` 
+    * alternatively, just update your ~/.vimrc file
 3. Install Plugins:
 
    Launch `vim` and run `:PluginInstall`
 
    To install from command line: `vim +PluginInstall +qall`
-
+   
 4. Install the_silver_searcher (for Ag)
 
-5. Profit!!!
+5. Add the following to your .bash_profile or .zshrc 
+   ```
+   export LANG=en_US.UTF-8
+   export LC_ALL=en_US.UTF-8
+   ```
 
+6. Profit!!!
 
 ## Sample Commands
 
