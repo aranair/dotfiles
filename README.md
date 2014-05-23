@@ -6,7 +6,7 @@
 
 2. Symlink vimrc file
 
-    `ln -s ~/dotfiles/vimrc ~/.vimrc`
+    `ln -s ~/dotfiles/vimrc ~/.vimrc` or just update your ~/.vimrc file
     
 3. Install Plugins:
 
@@ -14,7 +14,6 @@
 
    To install from command line: `vim +PluginInstall +qall`
 
-4. Install Ack
-
+4. Install the_silver_searcher (for Ag)
 
 5. Profit!!!
