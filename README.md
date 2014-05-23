@@ -33,8 +33,14 @@
 ## Sample Commands
 
 1. `<Space>w` writes to file (save)
-2. `<Space>e` write+quit
-3. `<Space>t` new tab
-4. `<Ctrl-n>` Open Nerdtree File Browsing (https://github.com/scrooloose/nerdtree)
-5. `<Ctrl-f>` Search text using Ag (https://github.com/rking/ag.vim)
-6. `<Ctrl-p>` Fuzzy file finder (https://github.com/kien/ctrlp.vim)
+2. `<Space>q` quit
+3. `<Space>e` write + quit
+4. `<Space>t` new tab
+ 
+5. `<Space>y` copy to clipboard
+6. `<Space>p` paste from clipboard
+ 
+5. `<Ctrl-n>` Open Nerdtree File Browsing (https://github.com/scrooloose/nerdtree)
+6. `<Ctrl-f>` Search text using Ag (https://github.com/rking/ag.vim)
+7. `<Ctrl-p>` Fuzzy file finder (https://github.com/kien/ctrlp.vim)
+
