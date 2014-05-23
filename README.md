@@ -14,7 +14,6 @@
 
    To install from command line: `vim +PluginInstall +qall`
 
-4. Install Ack
-
+4. Install the_silver_searcher (for Ag)
 
 5. Profit!!!
