@@ -14,7 +14,9 @@
 
    To install from command line: `vim +PluginInstall +qall`
    
-4. Install the_silver_searcher (for Ag)
+4. Install [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) (for Ag)
+
+   `brew install the_silver_searcher`
 
 5. Add the following to your .bash_profile or .zshrc 
    ```
