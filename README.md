@@ -21,7 +21,7 @@
 5. Profit!!!
 
 
-## Some Sample Commands from Packages Included
+## Sample Commands
 
 1. `<Space>w` writes to file (save)
 2. `<Space>e` write+quit
