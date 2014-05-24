@@ -45,7 +45,6 @@ set smartindent
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
-let g:solarized_termcolors=256
 
 nnoremap j gj
 nnoremap k gk
