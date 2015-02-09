@@ -19,6 +19,7 @@ Plugin 'L9'
 Plugin 'rking/ag.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'bling/vim-airline'
+Bundle 'derekwyatt/vim-scala'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,7 +59,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :Ag 
+map <C-f> :Ag
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>
@@ -86,13 +87,21 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+hi TabLineFill term=NONE cterm=NONE ctermbg=233
+hi TabLineSel term=NONE cterm=NONE ctermbg=240
+hi TabLine term=NONE cterm=NONE ctermbg=233
+hi CursorLine   cterm=NONE ctermbg=237
+hi CursorColumn cterm=NONE ctermbg=237
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-colorscheme solarized
+" colorscheme solarized
+colorscheme Monokai
 
 if exists("+showtabline")
   function MyTabLine()
@@ -123,3 +132,8 @@ if exists("+showtabline")
   set stal=2
   set tabline=%!MyTabLine()
 endif
+hi TabLineFill term=NONE cterm=NONE ctermbg=233
+hi TabLineSel term=NONE cterm=NONE ctermbg=240
+hi TabLine term=NONE cterm=NONE ctermbg=233
+hi CursorLine   cterm=NONE ctermbg=236
+hi CursorColumn cterm=NONE ctermbg=236
