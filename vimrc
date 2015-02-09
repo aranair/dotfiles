@@ -14,6 +14,7 @@ Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'L9'
 Plugin 'vim-scripts/gitignore'
 Plugin 'fatih/vim-go'
@@ -85,4 +86,5 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-colorscheme solarized
+" colorscheme solarized
+colorscheme Monokai
