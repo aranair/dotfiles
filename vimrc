@@ -7,6 +7,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rails'
 Plugin 'Raimondi/delimitMate'
 Plugin 'kien/ctrlp.vim'
 Plugin 'docunext/closetag.vim'
@@ -19,6 +20,7 @@ Plugin 'L9'
 Plugin 'vim-scripts/gitignore'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-endwise'
+Plugin 'rking/ag.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,7 +54,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :Ack 
+map <C-f> :Ag 
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>
@@ -82,7 +84,7 @@ vmap <Leader>P "+P
 
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
