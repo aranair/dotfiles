@@ -28,7 +28,11 @@
  
    `cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/`
 
-7. Profit!!!
+7. Find the right color profile for iTerm if you're using that.
+ 
+   `https://github.com/mbadolato/iTerm2-Color-Schemes
+
+8. Profit!!!
 
 ## Sample Commands
 
