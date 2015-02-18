@@ -4,10 +4,11 @@
 
    `$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-2. Symlink vimrc file
+2. Symlink file(s)
     * `git clone git@github.com:aranair/dotfiles.git ~/dotfiles`
-    * `ln -s ~/dotfiles/vimrc ~/.vimrc` 
-    * alternatively, just update your ~/.vimrc file
+    * `ln -s ~/dotfiles/vimrc ~/.vimrc` and `ln -s ~/dotfiles/tmux.conf ~/.tmux.conf`
+    * alternatively, just copy and paste into your ~/.vimrc file
+   
 3. Install Plugins:
 
    Launch `vim` and run `:PluginInstall`
@@ -32,7 +33,9 @@
  
    `https://github.com/mbadolato/iTerm2-Color-Schemes
 
-8. Profit!!!
+8. (If you want) Brew Install tmux + reattach-to-user-namespace
+   * `brew install tmux`
+   * `brew install reattach-to-user-namespace`
 
 ## Sample Commands
 
