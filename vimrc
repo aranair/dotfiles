@@ -1,4 +1,4 @@
-set nocompatible
+
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -32,7 +32,7 @@ let mapleader = "\<Space>"
 set autoindent
 set background=dark
 set number
-set t_Co=256
+" set t_Co=256
 set pastetoggle=<F2>
 set tabstop=2
 set softtabstop=2
@@ -60,7 +60,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :Ag
+map <C-f> :Ag 
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>
@@ -88,11 +88,6 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-hi TabLineFill term=NONE cterm=NONE ctermbg=233
-hi TabLineSel term=NONE cterm=NONE ctermbg=240
-hi TabLine term=NONE cterm=NONE ctermbg=233
-hi CursorLine   cterm=NONE ctermbg=237
-hi CursorColumn cterm=NONE ctermbg=237
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 let g:ctrlp_cmd = 'CtrlP'
@@ -102,6 +97,8 @@ let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 " colorscheme solarized
+" colorscheme ir_black
+" colorscheme Tomorrow-Night
 colorscheme Monokai
 
 if exists("+showtabline")
@@ -136,5 +133,5 @@ endif
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
 hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
-hi CursorLine   cterm=NONE ctermbg=236
-hi CursorColumn cterm=NONE ctermbg=236
+hi CursorLine   cterm=NONE ctermbg=237
+hi CursorColumn cterm=NONE ctermbg=237
