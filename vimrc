@@ -24,6 +24,7 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'bling/vim-airline'
 Bundle 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-rsi'
+Bundle 'uarun/vim-protobuf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
