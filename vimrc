@@ -23,6 +23,7 @@ Plugin 'rking/ag.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'bling/vim-airline'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'uarun/vim-protobuf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -62,7 +63,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :Ag
+map <C-f> :Ag 
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 nnoremap <Leader>w :w<CR>

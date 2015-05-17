@@ -17,8 +17,16 @@ alias caba="cd ~/Projects/carebear"
 alias hot="cd ~/Projects/hoteru"
 alias be="bundle exec"
 
+# tmux alias
+alias tmux="TERM=screen-256color-bce tmux"
+alias ta="tmux a -t"
+alias tn="tmux new -s"
+
+export EDITOR='vim'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export CC=/usr/bin/gcc
+export GOPATH=$HOME/go
 export PATH="/Users/admin/.rvm/gems/ruby-2.0.0-p451/bin:/Users/admin/.rvm/gems/ruby-2.0.0-p451@global/bin:/Users/admin/.rvm/rubies/ruby-2.0.0-p451/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/admin/.rvm/bin"
 
 # Opens the github page for the current git repository in your browser
