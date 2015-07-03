@@ -25,6 +25,7 @@ Bundle 'bling/vim-airline'
 Bundle 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-rsi'
 Bundle 'uarun/vim-protobuf'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,6 +75,34 @@ nnoremap <CR> G
 nnoremap <BS> gg
 
 "GOLANG STUFF BELOW
+map <C-t> :TagbarToggle<CR>
+let g:tagbar_type_go = {  
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
 let g:go_highlight_functions = 1
