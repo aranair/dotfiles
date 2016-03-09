@@ -1,4 +1,3 @@
-
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -22,6 +21,9 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'bling/vim-airline'
 Bundle 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-rsi'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'fatih/vim-go'
+Bundle 'bilalq/lite-dfm'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,7 +48,7 @@ set ruler                 " Always show info along bottom."
 set laststatus=2          " last window always has a statusline"
 set smarttab              " use tabs at the start of a line, spaces elsewhere"
 set smartindent
-set colorcolumn=80
+set colorcolumn=100
 set statusline+=%F
 
 let g:solarized_visibility = "high"
@@ -89,13 +91,19 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|node_modules'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+" Backups & Files
+set backup                     " Enable creation of backup file.
+set backupdir=~/.vim/backup/   " Where backups will go.
+set directory=~/.vim/swp//     " Where temporary files will go.
 
 " colorscheme solarized
 " colorscheme ir_black
@@ -131,6 +139,7 @@ if exists("+showtabline")
   set stal=2
   set tabline=%!MyTabLine()
 endif
+ 
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
 hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
