@@ -23,7 +23,7 @@ Bundle 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-rsi'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
-Bundle 'bilalq/lite-dfm'
+Plugin 'junegunn/goyo.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,32 +110,33 @@ set directory=~/.vim/swp//     " Where temporary files will go.
 " colorscheme Tomorrow-Night
 colorscheme Monokai
 
+function MyTabLine()
+  let s = ''
+  let t = tabpagenr()
+  let i = 1
+  while i <= tabpagenr('$')
+    let buflist = tabpagebuflist(i)
+    let winnr = tabpagewinnr(i)
+    let s .= '%' . i . 'T'
+    let s .= (i == t ? '%1*' : '%2*')
+    let s .= '  '
+    let s .= i . ')'
+    let s .= '%*'
+    let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+    let file = bufname(buflist[winnr - 1])
+    let file = fnamemodify(file, ':p:t')
+    if file == ''
+      let file = '[No Name]'
+    endif
+    let s .= file
+    let i = i + 1
+  endwhile
+  let s .= '%T%#TabLineFill#%='
+  let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+  return s
+endfunction
+
 if exists("+showtabline")
-  function MyTabLine()
-    let s = ''
-    let t = tabpagenr()
-    let i = 1
-    while i <= tabpagenr('$')
-      let buflist = tabpagebuflist(i)
-      let winnr = tabpagewinnr(i)
-      let s .= '%' . i . 'T'
-      let s .= (i == t ? '%1*' : '%2*')
-      let s .= '  '
-      let s .= i . ')'
-      let s .= '%*'
-      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-      let file = bufname(buflist[winnr - 1])
-      let file = fnamemodify(file, ':p:t')
-      if file == ''
-        let file = '[No Name]'
-      endif
-      let s .= file
-      let i = i + 1
-    endwhile
-    let s .= '%T%#TabLineFill#%='
-    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-    return s
-  endfunction
   set stal=2
   set tabline=%!MyTabLine()
 endif
@@ -145,3 +146,25 @@ hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
 hi CursorLine   cterm=NONE ctermbg=237
 hi CursorColumn cterm=NONE ctermbg=237
+
+function! s:goyo_enter()
+  silent !tmux set status off
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  set showtabline=2
+  hi TabLineFill term=NONE cterm=NONE ctermbg=233
+  hi TabLineSel term=NONE cterm=NONE ctermbg=240
+  hi TabLine term=NONE cterm=NONE ctermbg=233
+  hi CursorLine   cterm=NONE ctermbg=237
+  hi CursorColumn cterm=NONE ctermbg=237
+  set stal=2
+  set tabline=%!MyTabLine()
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+nnoremap <Leader>z :Goyo<CR>
+nnoremap <Leader>Z :Goyo!<CR>
+let g:goyo_width = 110
