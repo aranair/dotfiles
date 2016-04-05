@@ -26,6 +26,7 @@ Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'vim-scripts/SearchComplete'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,6 +76,13 @@ let g:ruby_path='/usr/bin/ruby'
 nnoremap j gj
 nnoremap k gk
 
+
+map <Leader>s <Plug>(easymotion-s)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>f <Plug>(easymotion-jumptoanywhere)
+map \ <Plug>(easymotion-prefix)
+
 map <C-n> :NERDTreeToggle<CR>
 map <C-f> :Ag 
 map <Leader>r :NERDTreeFind<CR>
@@ -103,8 +111,6 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-
-map <Leader> <Plug>(easymotion-prefix)
 
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
