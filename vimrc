@@ -24,6 +24,8 @@ Plugin 'tpope/vim-rsi'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,6 +52,17 @@ set smarttab              " use tabs at the start of a line, spaces elsewhere"
 set smartindent
 set colorcolumn=100
 set statusline+=%F
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" let g:syntastic_javascript_jslint_args = "--white --nomen --regexp --browser --devel --windows --sloppy --vars"
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_jshint_args = '--config .jshint.json'
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -91,13 +104,17 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+map <Leader> <Plug>(easymotion-prefix)
+
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|node_modules'
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 " Backups & Files
@@ -140,7 +157,7 @@ if exists("+showtabline")
   set stal=2
   set tabline=%!MyTabLine()
 endif
- 
+
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
 hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
@@ -148,22 +165,24 @@ hi CursorLine   cterm=NONE ctermbg=237
 hi CursorColumn cterm=NONE ctermbg=237
 
 function! s:goyo_enter()
-  silent !tmux set status off
+  set number
 endfunction
 
 function! s:goyo_leave()
-  silent !tmux set status on
   set showtabline=2
   hi TabLineFill term=NONE cterm=NONE ctermbg=233
   hi TabLineSel term=NONE cterm=NONE ctermbg=240
   hi TabLine term=NONE cterm=NONE ctermbg=233
   hi CursorLine   cterm=NONE ctermbg=237
   hi CursorColumn cterm=NONE ctermbg=237
+  
   set stal=2
   set tabline=%!MyTabLine()
+  set number
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>z :Goyo<CR>
 let g:goyo_width = 110
+let g:goyo_height = 100
