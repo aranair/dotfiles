@@ -1,6 +1,7 @@
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
@@ -27,6 +28,9 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/SearchComplete'
+Plugin 'majutsushi/tagbar'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,25 +77,38 @@ let g:airline_powerline_fonts = 1
 " This helps with jruby stuff?
 let g:ruby_path='/usr/bin/ruby'
 
+nmap <F8> :TagbarToggle<CR>
+nmap ; :CtrlPBuffer<CR>
+
+" Movements and custom
+inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap <Leader>1 yypk
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <CR> G
 
-
+" Easymotion
 map <Leader>s <Plug>(easymotion-s)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>f <Plug>(easymotion-jumptoanywhere)
 map \ <Plug>(easymotion-prefix)
 
-map <C-n> :NERDTreeToggle<CR>
+" Search
 map <C-f> :Ag 
+
+" Nerdtree
+map <C-n> :NERDTreeToggle<CR>
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
+
+" Writes
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :wq<CR>
-nnoremap <CR> G
-nnoremap <BS> gg
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
@@ -120,7 +137,12 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|node_modules'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 " Backups & Files
@@ -192,3 +214,16 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>z :Goyo<CR>
 let g:goyo_width = 110
 let g:goyo_height = 100
+
+function! NeatFoldText() "{{{2
+  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+  let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+  let foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
+set foldtext=NeatFoldText()
+" }}}2
