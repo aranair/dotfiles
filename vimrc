@@ -25,12 +25,13 @@ Plugin 'tpope/vim-rsi'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" Plugin 'Shougo/neocomplete'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,6 +74,13 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
 let g:airline_powerline_fonts = 1
+
+" let g:neocomplete#enable_at_startup = 1
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " This helps with jruby stuff?
 let g:ruby_path='/usr/bin/ruby'
