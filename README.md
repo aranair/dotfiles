@@ -28,6 +28,7 @@
 6. Put solarized colors into ~/.vim/colors
  
    `cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/`
+   `cp ~/dotfiles/Monokai.vim ~/.vim/colors/`
 
 7. Find the right color profile for iTerm if you're using that.
  
@@ -36,6 +37,17 @@
 8. (If you want) Brew Install tmux + reattach-to-user-namespace
    * `brew install tmux`
    * `brew install reattach-to-user-namespace`
+
+## Optionals (for myself)
+
+9. Install zsh to override default one 
+ 
+   `brew install zsh`
+
+10. Install oh-my-zsh and copy over zshrc
+
+   `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+
 
 ## Sample Commands
 
