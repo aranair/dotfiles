@@ -1,4 +1,8 @@
-## Steps
+## Auto
+
+./fresh-setup.sh
+
+## Manual
 
 1. Set up [Vundle]:
 
@@ -27,8 +31,8 @@
 
 6. Put solarized colors into ~/.vim/colors
  
-   `cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/`
-   `cp ~/dotfiles/Monokai.vim ~/.vim/colors/`
+   - `cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/` OR
+   - `cp ~/dotfiles/Monokai.vim ~/.vim/colors/`
 
 7. Find the right color profile for iTerm if you're using that.
  
