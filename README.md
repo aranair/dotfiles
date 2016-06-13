@@ -1,6 +1,6 @@
 ## Auto
 
-./fresh-setup.sh
+`./fresh-setup.sh`
 
 ## Manual
 
