@@ -17,6 +17,7 @@ brew install vim
 brew install the_silver_searcher
 brew install zsh
 brew install tmux
+brew install tmuxinator
 brew install reattach-to-user-namespace
 
 # Oh-my-zsh
