@@ -32,6 +32,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
 " Plugin 'Shougo/neocomplete'
 
 " All of your Plugins must be added before the following line

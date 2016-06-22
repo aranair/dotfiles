@@ -17,6 +17,7 @@ alias tsu="cd ~/Projects/tsubasa"
 alias caba="cd ~/Projects/carebear"
 alias hot="cd ~/Projects/hoteru"
 alias be="bundle exec"
+alias sync="git branch --merged master | grep -v 'master$' | xargs git branch -d"
 
 # tmux alias
 alias tmux="TERM=screen-256color-bce tmux"
