@@ -104,7 +104,7 @@ nnoremap <CR> G
 map <Leader>s <Plug>(easymotion-s)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-map <Leader>f <Plug>(easymotion-jumptoanywhere)
+map <Leader>f <Plug>(easymotion-bd-w)
 map \ <Plug>(easymotion-prefix)
 
 " Search

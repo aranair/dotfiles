@@ -2,7 +2,11 @@ ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="af-magic"
 ZSH_THEME="agnoster"
 
+# eval $(docker-machine env default)
+
 source $ZSH/oh-my-zsh.sh
+# source /usr/local/share/zsh/site-functions/_aws
+prompt_context () { }
 
 alias gl="git pull"
 alias gs="git status"
@@ -13,11 +17,8 @@ alias gcm="git commit -m"
 alias gpo="git push origin"
 alias gph="git push heroku"
 alias stree='open -a SourceTree .'
-alias tsu="cd ~/Projects/tsubasa"
-alias caba="cd ~/Projects/carebear"
-alias hot="cd ~/Projects/hoteru"
 alias be="bundle exec"
-alias sync="git branch --merged master | grep -v 'master$' | xargs git branch -d"
+alias syn='git branch --merged | grep -v "\*" | grep -v master | grep -v development | xargs -n 1 git branch -d'
 
 # tmux alias
 alias tmux="TERM=screen-256color-bce tmux"
@@ -27,7 +28,10 @@ alias tn="tmux new -s"
 export EDITOR='vim'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PATH="/Users/admin/.rvm/gems/ruby-2.0.0-p451/bin:/Users/admin/.rvm/gems/ruby-2.0.0-p451@global/bin:/Users/admin/.rvm/rubies/ruby-2.0.0-p451/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/admin/.rvm/bin"
+
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/pocketmath/.rvm/bin"
+export PATH="$PATH:/path/to/elixir/bin"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Opens the github page for the current git repository in your browser
 function gh() {
