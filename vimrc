@@ -2,6 +2,16 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" augroup Python
+"   set tabstop=4
+"   set softtabstop=4
+"   set shiftwidth=4
+"   set textwidth=79
+"   set expandtab
+"   set autoindent
+"   set fileformat=unix
+" augroup END
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
@@ -9,6 +19,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-dispatch'
 Plugin 'Raimondi/delimitMate'
 Plugin 'kien/ctrlp.vim'
 Plugin 'docunext/closetag.vim'
@@ -33,6 +44,14 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'janko-m/vim-test'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'tpope/vim-markdown'
+Plugin 'slim-template/vim-slim'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'nvie/vim-flake8'
+
+" Plugin 'tpope/vim-fireplace'
 " Plugin 'Shougo/neocomplete'
 
 " All of your Plugins must be added before the following line
@@ -58,11 +77,14 @@ set ruler                 " Always show info along bottom."
 set laststatus=2          " last window always has a statusline"
 set smarttab              " use tabs at the start of a line, spaces elsewhere"
 set smartindent
-set colorcolumn=100
+set colorcolumn=120
 set statusline+=%F
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufNewFile,BufReadPost *.markdown set filetype=markdown
 
 " let g:syntastic_javascript_jslint_args = "--white --nomen --regexp --browser --devel --windows --sloppy --vars"
 let g:syntastic_javascript_checkers = ['jshint']
@@ -76,6 +98,9 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
 let g:airline_powerline_fonts = 1
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
+
+let python_highlight_all=1
 
 " let g:neocomplete#enable_at_startup = 1
 " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -99,6 +124,10 @@ vnoremap <tab> %
 nnoremap <Leader>1 yypk
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <CR> G
+
+" nnoremap <F1> :Dispatch<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Easymotion
 map <Leader>s <Plug>(easymotion-s)
@@ -213,7 +242,7 @@ function! s:goyo_leave()
   hi TabLine term=NONE cterm=NONE ctermbg=233
   hi CursorLine   cterm=NONE ctermbg=237
   hi CursorColumn cterm=NONE ctermbg=237
-  
+
   set stal=2
   set tabline=%!MyTabLine()
   set number
@@ -222,10 +251,18 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>z :Goyo<CR>
-let g:goyo_width = 110
+let g:goyo_width = 200
 let g:goyo_height = 100
 
-function! NeatFoldText() "{{{2
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" function! <SID>StripTrailingWhitespaces()
+"  let l = line(".")
+"  let c = col(".")
+"  %s/\s\+$//e
+"  call cursor(l, c)
+" endfun
+
+function! NeatFoldText()
   let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
   let lines_count = v:foldend - v:foldstart + 1
   let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
@@ -235,5 +272,6 @@ function! NeatFoldText() "{{{2
   let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
+
 set foldtext=NeatFoldText()
-" }}}2
+
