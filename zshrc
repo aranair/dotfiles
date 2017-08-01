@@ -1,11 +1,16 @@
 ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="af-magic"
-ZSH_THEME="agnoster"
-
-# eval $(docker-machine env default)
-
+# ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="avit"
+# ZSH_THEME="pure"
+# ZSH_THEME=""
 source $ZSH/oh-my-zsh.sh
-# source /usr/local/share/zsh/site-functions/_aws
+# autoload -U promptinit; promptinit
+# prompt pure
+
+eval $(docker-machine env)
+source /usr/local/share/zsh/site-functions/_aws
 prompt_context () { }
 
 alias gl="git pull"
@@ -15,6 +20,7 @@ alias gc="git checkout"
 alias gcb="git checkout -b"
 alias gcm="git commit -m"
 alias gpo="git push origin"
+alias gpof="git push origin --force-with-lease"
 alias gph="git push heroku"
 alias stree='open -a SourceTree .'
 alias be="bundle exec"
