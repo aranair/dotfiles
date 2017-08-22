@@ -187,7 +187,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 " Backups & Files
 set backup                     " Enable creation of backup file.
 set backupdir=~/.vim/backup/   " Where backups will go.
-set directory=~/.vim/swp//     " Where temporary files will go.
+set directory=~/.vim/swp/     " Where temporary files will go.
 
 " colorscheme solarized
 " colorscheme ir_black
