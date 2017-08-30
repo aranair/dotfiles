@@ -36,7 +36,7 @@ Plugin 'tpope/vim-rsi'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
-" Plugin 'scrooloose/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'majutsushi/tagbar'
@@ -83,16 +83,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufNewFile,BufReadPost *.markdown set filetype=markdown
-
 " let g:syntastic_javascript_jslint_args = "--white --nomen --regexp --browser --devel --windows --sloppy --vars"
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_javascript_jshint_args = '--config .jshint.json'
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exe = 'yarn lint'
 
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -143,6 +140,7 @@ map <C-f> :Ag
 map <C-n> :NERDTreeToggle<CR>
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
+let g:NERDTreeWinSize=60
 
 " Writes
 nnoremap <Leader>w :w<CR>
@@ -231,6 +229,7 @@ hi TabLine term=NONE cterm=NONE ctermbg=233
 hi CursorLine   cterm=NONE ctermbg=237
 hi CursorColumn cterm=NONE ctermbg=237
 
+" ---------------------- GOYO ---------------------------------- "
 function! s:goyo_enter()
   set number
 endfunction
@@ -254,13 +253,19 @@ nnoremap <Leader>z :Goyo<CR>
 let g:goyo_width = 200
 let g:goyo_height = 100
 
-" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-" function! <SID>StripTrailingWhitespaces()
-"  let l = line(".")
-"  let c = col(".")
-"  %s/\s\+$//e
-"  call cursor(l, c)
-" endfun
+" ------------------- Strip White space --------------------- "
+function! <SID>StripTrailingWhitespaces()
+  " Don't strip on these filetypes
+  if &ft =~ 'vim\|perl'
+    return
+  endif
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd BufNewFile,BufReadPost *.markdown set filetype=markdown
 
 function! NeatFoldText()
   let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
