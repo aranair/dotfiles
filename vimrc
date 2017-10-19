@@ -14,10 +14,10 @@ Plugin 'tpope/vim-endwise'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'Raimondi/delimitMate'
 " Plugin 'kien/ctrlp.vim'
-Plugin 'docunext/closetag.vim'
+" Plugin 'docunext/closetag.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
-Plugin 'mileszs/ack.vim'
+" Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'L9'
 Plugin 'rking/ag.vim'
@@ -26,19 +26,19 @@ Bundle 'bling/vim-airline'
 " Bundle 'derekwyatt/vim-scala'
 " Plugin 'tpope/vim-rsi'
 " Plugin 'editorconfig/editorconfig-vim'
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'vim-syntastic/syntastic'
-Plugin 'easymotion/vim-easymotion'
+" Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'SirVer/ultisnips'
 " Plugin 'garbas/vim-snipmate'
 " Plugin 'honza/vim-snippets'
 " Plugin 'kchmck/vim-coffee-script'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'janko-m/vim-test'
+" Plugin 'elixir-lang/vim-elixir'
+" Plugin 'janko-m/vim-test'
 " Plugin 'terryma/vim-smooth-scroll'
-Plugin 'tpope/vim-markdown'
+" Plugin 'tpope/vim-markdown'
 " Plugin 'flowtype/vim-flow'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'pangloss/vim-javascript'
@@ -223,11 +223,6 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" Cursor Column
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-:set cursorline!
-nnoremap <Leader>c :set cursorcolumn!<CR>
-
 " CtrlP
 " let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_cmd = 'CtrlP'
@@ -281,10 +276,16 @@ if exists("+showtabline")
   set tabline=%!MyTabLine()
 endif
 
+" Cursor Column
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+:set cursorline!
+nnoremap <Leader>c :set cursorcolumn!<CR>
+
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
 hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
-hi CursorLine   cterm=NONE ctermbg=237
+hi CursorLine   cterm=NONE ctermbg=NONE
+" hi CursorLine   cterm=NONE ctermbg=237
 hi CursorColumn cterm=NONE ctermbg=237
 
 " GOYO"
