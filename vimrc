@@ -26,7 +26,7 @@ Bundle 'bling/vim-airline'
 " Bundle 'derekwyatt/vim-scala'
 " Plugin 'tpope/vim-rsi'
 " Plugin 'editorconfig/editorconfig-vim'
-" Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'easymotion/vim-easymotion'
@@ -39,12 +39,13 @@ Plugin 'SirVer/ultisnips'
 " Plugin 'janko-m/vim-test'
 " Plugin 'terryma/vim-smooth-scroll'
 " Plugin 'tpope/vim-markdown'
-" Plugin 'flowtype/vim-flow'
+Plugin 'flowtype/vim-flow'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'junegunn/fzf.vim'
-" Plugin 'w0rp/ale'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'w0rp/ale'
 " Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'nvie/vim-flake8' -- python
 " Plugin 'tpope/vim-fireplace'
@@ -78,6 +79,14 @@ set statusline+=%F
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set noswapfile
+
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+set hidden "keeps undo history across buffers
 
 autocmd FileType text setlocal textwidth=78
 autocmd FileType markdown setlocal wrap
@@ -95,7 +104,7 @@ nmap ; :Buffers<CR>
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
-let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_ngdoc = 0
 let g:javascript_conceal_function             = "ƒ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
@@ -119,15 +128,19 @@ let g:syntastic_javascript_flow_exe = 'flow'
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules'
 
 
+let g:flow#showquickfix = 1
+let g:flow#timeout = 4
+let g:flow#enable = 0
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_javascript_flow_executable = "$(npm bin)/flow"
 let g:ale_javascript_eslint_executable = "$(npm bin)/eslint"
 let g:ale_javascript_eslint_options = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules"
-let g:ale_sign_column_always = 1
-let g:flow#showquickfix = 1
+let g:ale_sign_column_always = 0
 let g:ale_lint_on_enter = 0
-let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
-\}
+let g:ale_linters = { 'javascript': ['eslint', 'flow'] }
 
 "Use locally installed flow
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
@@ -278,7 +291,7 @@ endif
 
 " Cursor Column
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-:set cursorline!
+" set cursorline
 nnoremap <Leader>c :set cursorcolumn!<CR>
 
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
