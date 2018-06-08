@@ -127,8 +127,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
 let g:syntastic_javascript_flow_exe = 'flow'
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules'
+let g:syntastic_javascript_eslint_exe = '/opt/nodejs-8.9.4/bin/eslint --rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules'
 
+let g:flow#showquickfix = 1
+let g:flow#timeout = 4
+let g:flow#enable = 0
 
 let g:flow#showquickfix = 1
 let g:flow#timeout = 4
@@ -138,7 +141,7 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_javascript_flow_executable = "$(npm bin)/flow"
-let g:ale_javascript_eslint_executable = "$(npm bin)/eslint"
+let g:ale_javascript_eslint_executable = "/opt/nodejs-8.9.4/bin/eslint"
 let g:ale_javascript_eslint_options = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules"
 let g:ale_sign_column_always = 0
 let g:ale_lint_on_enter = 0
