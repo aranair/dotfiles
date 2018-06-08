@@ -46,6 +46,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'junegunn/fzf.vim'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'w0rp/ale'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'majutsushi/tagbar'
 " Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'nvie/vim-flake8' -- python
 " Plugin 'tpope/vim-fireplace'
@@ -159,8 +161,7 @@ let g:airline_powerline_fonts = 1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
 
 " Tagbar
-" nmap <F8> :TagbarToggle<CR>
-" nmap ; :CtrlPBuffer<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Movements and custom
 " inoremap jj <ESC>
@@ -187,7 +188,7 @@ map <Leader>f <Plug>(easymotion-bd-w)
 map \ <Plug>(easymotion-prefix)
 
 " Search
-map <C-f> :Ag 
+map <C-f> :Ag --mmap 
 
 " Nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
@@ -254,6 +255,9 @@ vmap <Leader>P "+P
 set backup                     " Enable creation of backup file.
 set backupdir=~/.vim/backup/   " Where backups will go.
 set directory=~/.vim/swp/     " Where temporary files will go.
+
+" vim-gitgutter
+set updatetime=100
 
 colorscheme Monokai
 
