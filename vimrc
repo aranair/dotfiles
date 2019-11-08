@@ -8,7 +8,6 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 " Plugin 'tpope/vim-dispatch'
 Plugin 'skywind3000/asyncrun.vim'
@@ -17,21 +16,19 @@ Plugin 'Raimondi/delimitMate'
 " Plugin 'docunext/closetag.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'L9'
 Plugin 'rking/ag.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'bling/vim-airline'
-" Bundle 'derekwyatt/vim-scala'
 " Plugin 'tpope/vim-rsi'
 " Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
-Plugin 'junegunn/goyo.vim'
+" Plugin 'junegunn/goyo.vim'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/SearchComplete'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 " Plugin 'garbas/vim-snipmate'
 " Plugin 'honza/vim-snippets'
 " Plugin 'kchmck/vim-coffee-script'
@@ -39,15 +36,16 @@ Plugin 'SirVer/ultisnips'
 " Plugin 'janko-m/vim-test'
 " Plugin 'terryma/vim-smooth-scroll'
 " Plugin 'tpope/vim-markdown'
-Plugin 'flowtype/vim-flow'
+" Plugin 'flowtype/vim-flow'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 Plugin 'junegunn/fzf.vim'
-Plugin 'wakatime/vim-wakatime'
-Plugin 'w0rp/ale'
+" Plugin 'wakatime/vim-wakatime'
+" Plugin 'w0rp/ale'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'mxw/vim-jsx'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'majutsushi/tagbar'
+Plugin 'HerringtonDarkholme/yats'
+" Plugin 'majutsushi/tagbar'
 " Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'nvie/vim-flake8' -- python
 " Plugin 'tpope/vim-fireplace'
@@ -57,9 +55,12 @@ Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
 filetype plugin indent on    " required
 syntax enable
-" Put your non-Plugin stuff after this line
-"
+
+colorscheme northland
+" colorscheme Monokai
+
 let mapleader = "\<Space>"
+
 set autoindent
 set background=dark
 set number
@@ -76,7 +77,7 @@ set ruler                 " Always show info along bottom."
 set laststatus=2          " last window always has a statusline"
 set smarttab              " use tabs at the start of a line, spaces elsewhere"
 set smartindent
-set colorcolumn=100
+" set colorcolumn=100
 set statusline+=%F
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -119,7 +120,7 @@ let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 
 " Eslint
-" let g:syntastic_javascript_jslint_args = "--white --nomen --regexp --browser --devel --windows --sloppy --vars"
+let g:syntastic_javascript_jslint_args = "--white --nomen --regexp --browser --devel --windows --sloppy --vars"
 let g:syntastic_javascript_jslint_args = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules/"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -129,20 +130,24 @@ let g:syntastic_javascript_checkers = ['eslint', 'flow']
 let g:syntastic_javascript_flow_exe = 'flow'
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules'
 
-
 let g:flow#showquickfix = 1
 let g:flow#timeout = 4
-let g:flow#enable = 0
+let g:flow#enable = 1
+
+let g:go_autodetect_gopath = 1
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 let g:ale_javascript_flow_executable = "$(npm bin)/flow"
 let g:ale_javascript_eslint_executable = "$(npm bin)/eslint"
-let g:ale_javascript_eslint_options = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules"
-let g:ale_sign_column_always = 0
-let g:ale_lint_on_enter = 0
-let g:ale_linters = { 'javascript': ['eslint', 'flow'] }
+let g:ale_javascript_eslint_options = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules --ignore-path /Users/homan/Projects/tulip/environments/.eslintignore"
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_enter = 1
+let g:ale_set_quickfix = 0
+let g:ale_linters = { 'javascript': ['eslint', 'flow'], 'go': ['gometalinter'] }
 
 "Use locally installed flow
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
@@ -159,6 +164,9 @@ let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
 let g:airline_powerline_fonts = 1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
+
+" vim-go
+let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck']
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -211,7 +219,8 @@ map <Leader>t :tabnew<CR>
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=40
+:let g:NERDTreeIgnore=['\~$', 'vendor', '.bundle']
 
 " Writes
 nnoremap <Leader>w :w<CR>
@@ -257,9 +266,8 @@ set backupdir=~/.vim/backup/   " Where backups will go.
 set directory=~/.vim/swp/     " Where temporary files will go.
 
 " vim-gitgutter
-set updatetime=100
-
-colorscheme Monokai
+set updatetime=300
+set signcolumn=yes
 
 " Custom Prompt
 function MyTabLine()
@@ -295,17 +303,17 @@ endif
 
 " Cursor Column
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" set cursorline
+set cursorline
 nnoremap <Leader>c :set cursorcolumn!<CR>
 
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
 hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
-hi CursorLine   cterm=NONE ctermbg=NONE
-" hi CursorLine   cterm=NONE ctermbg=237
+" hi CursorLine   cterm=NONE ctermbg=NONE
+hi CursorLine   cterm=NONE ctermbg=234
 hi CursorColumn cterm=NONE ctermbg=237
 
-" GOYO"
+" GOYO
 function! s:goyo_enter()
   set number
 endfunction
@@ -329,7 +337,7 @@ nnoremap <Leader>z :Goyo<CR>
 let g:goyo_width = 200
 let g:goyo_height = 100
 
-" ------------------- Strip White space --------------------- "
+" Strip White space
 function! <SID>StripTrailingWhitespaces()
   " Don't strip on these filetypes
   if &ft =~ 'vim\|perl'
@@ -343,6 +351,7 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 autocmd BufNewFile,BufReadPost *.markdown set filetype=markdown
 
+" Folding
 function! NeatFoldText()
   let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
   let lines_count = v:foldend - v:foldstart + 1
@@ -353,10 +362,12 @@ function! NeatFoldText()
   let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
-
 set foldtext=NeatFoldText()
-
-hi LineNr ctermbg=bg
 set foldcolumn=2
+
+" Colorscheme overrides
+hi Normal ctermfg=231 ctermbg=233 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
+hi LineNr ctermbg=bg
 hi foldcolumn ctermbg=bg
 hi VertSplit ctermbg=bg ctermfg=bg
+hi SignColumn ctermbg=bg

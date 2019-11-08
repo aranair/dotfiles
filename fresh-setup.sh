@@ -19,6 +19,9 @@ brew install zsh
 brew install tmux
 brew install tmuxinator
 brew install reattach-to-user-namespace
+brew install bat
+
+# npm install -g tldr
 
 # Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -48,7 +51,7 @@ cp ~/dotfiles/Monokai.vim ~/.vim/colors/
 
 # GIT
 echo -e "\n\n\n" ssh-keygen -t rsa -b 4096 -C "boa.homan@gmail.com"
-# ssh-keygen -t rsa -b 4096 -C "comment" -P "examplePassphrase" -f "desired pathAndName" -q 
+# ssh-keygen -t rsa -b 4096 -C "comment" -P "examplePassphrase" -f "desired pathAndName" -q
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
