@@ -89,7 +89,7 @@ set noswapfile
 
 " Persistent undo
 set undofile
-set undodir=$HOME/.vim/undo
+set undodir=$HOME/.vim/backup
 set undolevels=1000
 set undoreload=10000
 set hidden "keeps undo history across buffers
@@ -165,8 +165,29 @@ endif
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
-let g:airline_powerline_fonts = 1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
+let g:airline_powerline_fonts = 1
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
 
 " vim-go
 let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck']
@@ -205,7 +226,7 @@ map \ <Plug>(easymotion-prefix)
 map <C-f> :Ag --mmap 
 
 " Nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "•",
     \ "Staged"    : "+",
     \ "Untracked" : "*",
