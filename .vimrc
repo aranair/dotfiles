@@ -41,15 +41,18 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'junegunn/fzf.vim'
 " Plugin 'wakatime/vim-wakatime'
 " Plugin 'w0rp/ale'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'HerringtonDarkholme/yats'
+" Plugin 'HerringtonDarkholme/yats'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'nvie/vim-flake8' -- python
 " Plugin 'tpope/vim-fireplace'
 " Plugin 'Shougo/neocomplete'
+" Plugin 'rust-lang/rust.vim'
+Plugin 'metakirby5/codi.vim'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,7 +80,7 @@ set ruler                 " Always show info along bottom."
 set laststatus=2          " last window always has a statusline"
 set smarttab              " use tabs at the start of a line, spaces elsewhere"
 set smartindent
-" set colorcolumn=100
+set colorcolumn=100
 set statusline+=%F
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -168,6 +171,9 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
 " vim-go
 let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck']
 
+" rust
+let g:rustfmt_autosave = 1
+
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
@@ -217,10 +223,10 @@ map <C-n> :NERDTreeToggle<CR>
 map <Leader>r :NERDTreeFind<CR>
 map <Leader>t :tabnew<CR>
 let NERDTreeShowHidden=1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize=40
-:let g:NERDTreeIgnore=['\~$', 'vendor', '.bundle']
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+let g:NERDTreeWinSize=45
+let g:NERDTreeIgnore=['\~$', 'vendor', '.bundle']
 
 " Writes
 nnoremap <Leader>w :w<CR>
@@ -309,8 +315,10 @@ nnoremap <Leader>c :set cursorcolumn!<CR>
 hi TabLineFill term=NONE cterm=NONE ctermbg=233
 hi TabLineSel term=NONE cterm=NONE ctermbg=240
 hi TabLine term=NONE cterm=NONE ctermbg=233
-" hi CursorLine   cterm=NONE ctermbg=NONE
-hi CursorLine   cterm=NONE ctermbg=234
+hi CursorLine   cterm=NONE ctermbg=NONE
+" hi CursorLine   cterm=NONE ctermbg=234
+" hi CursorLineNr cterm=NONE ctermbg=NONE
+hi CursorLineNr term=bold cterm=bold ctermfg=012 gui=bold
 hi CursorColumn cterm=NONE ctermbg=237
 
 " GOYO
