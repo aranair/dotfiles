@@ -32,6 +32,8 @@ ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 cp ~/dotfiles/zshrc ~/.zshrc
 
+cp ~/dotfiles/karabiner.json ~/.config/karabiner/karabiner.json
+
 vim +PluginInstall +qall
 
 if [ ! -d "~/.vim/swp" ]; then
