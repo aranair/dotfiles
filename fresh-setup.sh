@@ -48,6 +48,11 @@ fi
 
 cp ~/dotfiles/Monokai.vim ~/.vim/colors/
 
+# Notes
+curl https://raw.githubusercontent.com/pimterry/notes/latest-release/notes > /usr/local/bin/notes && chmod +x /usr/local/bin/notes
+curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/_notes > /usr/local/share/zsh/site-functions/_notes
+
+
 # GIT
 # echo -e "\n\n\n" ssh-keygen -t rsa -b 4096 -C "boa.homan@gmail.com"
 # ssh-keygen -t rsa -b 4096 -C "comment" -P "examplePassphrase" -f "desired pathAndName" -q
@@ -56,3 +61,4 @@ cp ~/dotfiles/Monokai.vim ~/.vim/colors/
 
 # RVM
 /curl -sSL https://get.rvm.io | bash -s stable --ruby
+
