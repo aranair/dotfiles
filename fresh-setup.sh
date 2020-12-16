@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Exit immediately if any command returns a non-zero status
-set -e
 
 which -s brew
 if [[ $? != 0 ]] ; then
@@ -50,10 +49,10 @@ fi
 cp ~/dotfiles/Monokai.vim ~/.vim/colors/
 
 # GIT
-echo -e "\n\n\n" ssh-keygen -t rsa -b 4096 -C "boa.homan@gmail.com"
+# echo -e "\n\n\n" ssh-keygen -t rsa -b 4096 -C "boa.homan@gmail.com"
 # ssh-keygen -t rsa -b 4096 -C "comment" -P "examplePassphrase" -f "desired pathAndName" -q
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/id_rsa
 
 # RVM
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
+/curl -sSL https://get.rvm.io | bash -s stable --ruby
