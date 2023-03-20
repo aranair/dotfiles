@@ -8,6 +8,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-markdown'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
@@ -17,35 +18,15 @@ Plug 'vim-scripts/L9'
 Plug 'rking/ag.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'bling/vim-airline'
-" Plug 'tpope/vim-rsi'
-" Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
-" Plug 'junegunn/goyo.vim'
 Plug 'vim-syntastic/syntastic'
-" Plug 'easymotion/vim-easymotion'
-" Plug 'SirVer/ultisnips'
-" Plug 'garbas/vim-snipmate'
-" Plug 'honza/vim-snippets'
-" Plug 'kchmck/vim-coffee-script'
-" Plug 'elixir-lang/vim-elixir'
-" Plug 'janko-m/vim-test'
-" Plug 'terryma/vim-smooth-scroll'
-" Plug 'tpope/vim-markdown'
-" Plug 'flowtype/vim-flow'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'wakatime/vim-wakatime'
-" Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'airblade/vim-gitgutter'
-" Plug 'HerringtonDarkholme/yats'
-" Plug 'majutsushi/tagbar'
-" Plug 'nvie/vim-flake8' -- python
-" Plug 'tpope/vim-fireplace'
-" Plug 'Shougo/neocomplete'
-" Plug 'rust-lang/rust.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'hashivim/vim-terraform'
@@ -272,18 +253,6 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" CtrlP
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|node_modules'
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-" let g:ctrlp_use_caching = 0
-" " let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_working_path_mode = 0
-" " let g:ctrlp_match_window_bottom = 0
-" " let g:ctrlp_match_window_reversed = 0
-" let g:ctrlp_dotfiles = 0
-" let g:ctrlp_switch_buffer = 0
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 " Backups & Files
