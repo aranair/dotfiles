@@ -1,62 +1,58 @@
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin()
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-endwise'
-" Plugin 'tpope/vim-dispatch'
-Plugin 'skywind3000/asyncrun.vim'
-Plugin 'Raimondi/delimitMate'
-" Plugin 'kien/ctrlp.vim'
-" Plugin 'docunext/closetag.vim'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'L9'
-Plugin 'rking/ag.vim'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'bling/vim-airline'
-" Plugin 'tpope/vim-rsi'
-" Plugin 'editorconfig/editorconfig-vim'
-Plugin 'fatih/vim-go'
-" Plugin 'junegunn/goyo.vim'
-" Plugin 'vim-syntastic/syntastic'
-" Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-scripts/SearchComplete'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'honza/vim-snippets'
-" Plugin 'kchmck/vim-coffee-script'
-" Plugin 'elixir-lang/vim-elixir'
-" Plugin 'janko-m/vim-test'
-" Plugin 'terryma/vim-smooth-scroll'
-" Plugin 'tpope/vim-markdown'
-" Plugin 'flowtype/vim-flow'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'junegunn/fzf.vim'
-" Plugin 'wakatime/vim-wakatime'
-" Plugin 'w0rp/ale'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'airblade/vim-gitgutter'
-" Plugin 'HerringtonDarkholme/yats'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'nvie/vim-flake8' -- python
-" Plugin 'tpope/vim-fireplace'
-" Plugin 'Shougo/neocomplete'
-" Plugin 'rust-lang/rust.vim'
-Plugin 'metakirby5/codi.vim'
-Plugin 'leafgarland/typescript-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/L9'
+Plug 'rking/ag.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'bling/vim-airline'
+" Plug 'tpope/vim-rsi'
+" Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go'
+" Plug 'junegunn/goyo.vim'
+Plug 'vim-syntastic/syntastic'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'SirVer/ultisnips'
+" Plug 'garbas/vim-snipmate'
+" Plug 'honza/vim-snippets'
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'elixir-lang/vim-elixir'
+" Plug 'janko-m/vim-test'
+" Plug 'terryma/vim-smooth-scroll'
+" Plug 'tpope/vim-markdown'
+" Plug 'flowtype/vim-flow'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Plug 'wakatime/vim-wakatime'
+" Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'airblade/vim-gitgutter'
+" Plug 'HerringtonDarkholme/yats'
+" Plug 'majutsushi/tagbar'
+" Plug 'nvie/vim-flake8' -- python
+" Plug 'tpope/vim-fireplace'
+" Plug 'Shougo/neocomplete'
+" Plug 'rust-lang/rust.vim'
+Plug 'metakirby5/codi.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'hashivim/vim-terraform'
+Plug 'mustache/vim-mustache-handlebars'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 syntax enable
 
 colorscheme northland
@@ -103,14 +99,17 @@ autocmd FileType css   setlocal shiftwidth=2 tabstop=2
 autocmd FileType html  setlocal shiftwidth=2 tabstop=2
 
 " FZF
-set rtp+=/usr/local/opt/fzf
-nmap <c-p> :GFiles<CR>
+set rtp+=/Users/homan/.fzf/bin/fzf
+" let g:fzf_command_prefix = 'Fzf'
+set rtp+=~/.fzf
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+nmap <c-p> :FZF<CR>
 nmap ; :Buffers<CR>
 
 " vim-javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
-let g:javascript_plugin_ngdoc = 0
+let g:javascript_Plug_jsdoc = 1
+let g:javascript_Plug_flow = 1
+let g:javascript_Plug_ngdoc = 0
 let g:javascript_conceal_function             = "ƒ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
@@ -223,9 +222,9 @@ map <Leader>f <Plug>(easymotion-bd-w)
 map \ <Plug>(easymotion-prefix)
 
 " Search
-map <C-f> :Ag --mmap 
+map <C-f> :Ag --mmap -i 
 
-" Nerdtree-git-plugin
+" Nerdtree-git-Plug
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "•",
     \ "Staged"    : "+",
@@ -395,8 +394,20 @@ set foldtext=NeatFoldText()
 set foldcolumn=2
 
 " Colorscheme overrides
-hi Normal ctermfg=231 ctermbg=233 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
-hi LineNr ctermbg=bg
-hi foldcolumn ctermbg=bg
-hi VertSplit ctermbg=bg ctermfg=bg
-hi SignColumn ctermbg=bg
+hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
+" hi LineNr ctermbg=235
+hi foldcolumn ctermbg=None
+" hi Folded ctermbg=none
+hi VertSplit ctermbg=None ctermfg=NONE cterm=NONE
+" hi SignColumn ctermbg=235
+hi Normal ctermbg=none
+hi LineNr ctermbg=none
+hi Folded ctermbg=none
+hi NonText ctermbg=none
+hi SpecialKey ctermbg=none
+" hi VertSplit ctermbg=none
+hi SignColumn ctermbg=none
+
+hi TabLineFill ctermbg=None
+hi TabLine ctermbg=None
+hi TabLineSel ctermfg=BLUE ctermbg=None
