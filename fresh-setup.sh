@@ -43,6 +43,7 @@ mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/colors
 
 cp ~/dotfiles/Monokai.vim ~/.vim/colors/
+cp ~/dotfiles/Northland.vim ~/.vim/colors/
 
 # Notes
 NOTES_VERSION=1.1.0
