@@ -1,19 +1,14 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 source $ZSH/oh-my-zsh.sh
-source ~/.bin/tmuxinator.zsh
+# source ~/.bin/tmuxinator.zsh
 # autoload -U promptinit; promptinit
 # prompt pure
 
 # eval $(docker-machine env)
-source /usr/local/share/zsh/site-functions/_aws
+# source /usr/local/share/zsh/site-functions/_aws
 # source /Users/homan/Projects/tulip/scripts/setPaths.source.sh
 prompt_context () { }
-
-# Azure
-alias kz="KUBECONFIG=~/.kube/config-azure kubectl"
-alias kzs="KUBECONFIG=~/.kube/config-azure kubectl -n kube-system"
-alias k3="KUBECONFIG=~/Projects/k3s/kubeconfig.yaml kubectl"
 
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -97,13 +92,6 @@ function newpr() {
   giturl=$giturl$branch
   open $giturl
 }
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-. "/Users/homan/.acme.sh/acme.sh.env"
-
-ssh-add -K ~/.ssh/id_rsa
-export PATH="/usr/local/opt/mongodb@3.6/bin:$PATH"
 
 # FZF
 export FZF_DEFAULT_COMMAND='
@@ -112,4 +100,3 @@ export FZF_DEFAULT_COMMAND='
       sed s/^..//) 2> /dev/null'
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/mc mc
