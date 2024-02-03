@@ -4,10 +4,7 @@
 
 ## Manual
 
-1. Set up [Vundle]:
-
-   `$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-
+1. Set up [Vim-Plug]
 2. Symlink file(s)
     * `git clone git@github.com:aranair/dotfiles.git ~/dotfiles`
     * `ln -s ~/dotfiles/vimrc ~/.vimrc` and `ln -s ~/dotfiles/tmux.conf ~/.tmux.conf`

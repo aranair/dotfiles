@@ -1,10 +1,11 @@
 #!/bin/sh
 
 # Exit immediately if any command returns a non-zero status
+set -eou pipefail
 
 which -s brew
 if [[ $? != 0 ]] ; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   brew update
 fi
@@ -23,7 +24,8 @@ brew install bat
 # Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+mkdir -p ~/.vim/autoload
+cp plug.vim ~/.vim/autoload/plug.vim
 git clone git@github.com:aranair/dotfiles.git ~/dotfiles
 
 ln -s ~/dotfiles/.vimrc ~/.vimrc
@@ -54,9 +56,3 @@ cd $TMP_PATH && make USERDIR=$(eval echo ~$SUDO_USER)
 
 curl https://raw.githubusercontent.com/pimterry/notes/latest-release/notes > /usr/local/bin/notes && chmod +x /usr/local/bin/notes
 curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/_notes > /usr/local/share/zsh/site-functions/_notes
-
-# GIT
-# echo -e "\n\n\n" ssh-keygen -t rsa -b 4096 -C "boa.homan@gmail.com"
-# ssh-keygen -t rsa -b 4096 -C "comment" -P "examplePassphrase" -f "desired pathAndName" -q
-# eval "$(ssh-agent -s)"
-# ssh-add ~/.ssh/id_rsa
