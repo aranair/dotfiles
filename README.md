@@ -12,9 +12,9 @@
    
 3. Install Plugins:
 
-   Launch `vim` and run `:PluginInstall`
+   Launch `vim` and run `:PlugInstall`
 
-   To install from command line: `vim +PluginInstall +qall`
+   To install from command line: `vim +PlugInstall +qall`
    
 4. Install [the_silver_searcher](https://github.com/ggreer/the_silver_searcher) (for Ag)
 
