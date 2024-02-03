@@ -36,8 +36,8 @@ Plug 'mustache/vim-mustache-handlebars'
 call plug#end()            " required
 syntax enable
 
-" colorscheme northland
-colorscheme Monokai
+colorscheme northland
+" colorscheme Monokai
 
 let mapleader = "\<Space>"
 
