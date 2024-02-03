@@ -55,5 +55,5 @@ curl -L https://github.com/pimterry/notes/archive/refs/tags/${NOTES_VERSION}.tar
 
 cd $TMP_PATH && make USERDIR=$(eval echo ~$SUDO_USER)
 
-curl https://raw.githubusercontent.com/pimterry/notes/latest-release/notes > /usr/local/bin/notes && chmod +x /usr/local/bin/notes
+curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/notes > /usr/local/bin/notes && chmod +x /usr/local/bin/notes
 curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/_notes > /usr/local/share/zsh/site-functions/_notes
