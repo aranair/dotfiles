@@ -31,6 +31,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'github/copilot.vim'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
