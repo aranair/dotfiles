@@ -17,33 +17,44 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/L9'
 Plug 'rking/ag.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'bling/vim-airline'
-Plug 'fatih/vim-go'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'fatih/vim-go'
 Plug 'vim-syntastic/syntastic'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
-Plug 'metakirby5/codi.vim'
+" Plug 'metakirby5/codi.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'hashivim/vim-terraform'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'github/copilot.vim'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
 syntax enable
 
-colorscheme northland
-" colorscheme Monokai
+" colorscheme northland
+" colorscheme molokai
+colorscheme papercolor
 
 let mapleader = "\<Space>"
 
 set autoindent
-set background=dark
+" Auto-detect system dark/light mode (macOS)
+function! SetBackgroundFromSystem()
+  let s:mode = system("defaults read -g AppleInterfaceStyle 2>/dev/null")
+  if s:mode =~ 'Dark'
+    set background=dark
+  else
+    set background=light
+  endif
+endfunction
+call SetBackgroundFromSystem()
+" Re-check every 5 seconds
+call timer_start(5000, {-> execute('call SetBackgroundFromSystem()')}, {'repeat': -1})
 set number
 " set t_Co=256
 set pastetoggle=<F2>
@@ -133,6 +144,23 @@ let g:ale_lint_on_enter = 1
 let g:ale_set_quickfix = 0
 let g:ale_linters = { 'javascript': ['eslint', 'flow'], 'go': ['gometalinter'] }
 
+" CoC extensions
+" let g:coc_global_extensions = ['coc-tsserver']
+" " Remap keys for applying codeAction to the current line.
+" nmap <leader>ac  <Plug>(coc-codeaction)
+" " Apply AutoFix to problem on the current line.
+" nmap <leader>qf  <Plug>(coc-fix-current)
+" " GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+" " Make <CR> to accept selected completion item or notify coc.nvim to format
+" " <C-g>u breaks current undo, please make your own choice
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 "Use locally installed flow
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
 if matchstr(local_flow, "^\/\\w") == ''
@@ -147,28 +175,17 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
-let g:airline_powerline_fonts = 1
+
 " air-line
 let g:airline_powerline_fonts = 1
+let g:airline_detect_modified = 1
+let g:airline_detect_paste = 1
+let g:airline_theme='papercolor'
+autocmd User AirlineAfterTheme hi airline_c_inactive ctermfg=245 ctermbg=none cterm=none
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
 
 " vim-go
 let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck']
@@ -363,8 +380,16 @@ endfunction
 set foldtext=NeatFoldText()
 set foldcolumn=2
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 " Colorscheme overrides
-hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
+" hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 " hi LineNr ctermbg=235
 hi foldcolumn ctermbg=None
 " hi Folded ctermbg=none
@@ -381,3 +406,5 @@ hi SignColumn ctermbg=none
 hi TabLineFill ctermbg=None
 hi TabLine ctermbg=None
 hi TabLineSel ctermfg=BLUE ctermbg=None
+hi StatusLine ctermbg=236 ctermfg=white cterm=none
+hi StatusLineNC ctermbg=234 ctermfg=245 cterm=none
