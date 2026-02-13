@@ -4,6 +4,5 @@
   "defaultModel": "claude-opus-4-6",
   "skills": [
     "~/.claude/skills"
-  ],
-  "theme": null
+  ]
 }
