@@ -2,6 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+PI_DIR="$REPO_DIR/pi"
 echo "Syncing live Claude/Pi config → dotfiles repo..."
 
 # Core config
@@ -55,13 +57,13 @@ cp_if_exists ~/.claude/plugins/installed_plugins.json "$SCRIPT_DIR/plugins/insta
 
 echo ""
 echo "Pi agents:"
-mkdir -p "$SCRIPT_DIR/pi-agents"
+mkdir -p "$PI_DIR/agents"
 if [ -d ~/.pi/agent/agents ]; then
   for f in ~/.pi/agent/agents/*.md; do
-    [ -e "$f" ] && cp_if_exists "$f" "$SCRIPT_DIR/pi-agents/$(basename "$f")"
+    [ -e "$f" ] && cp_if_exists "$f" "$PI_DIR/agents/$(basename "$f")"
   done
   # Remove agents from repo that no longer exist locally
-  for repo_agent in "$SCRIPT_DIR/pi-agents/"*.md; do
+  for repo_agent in "$PI_DIR/agents/"*.md; do
     [ -e "$repo_agent" ] || continue
     agent_name=$(basename "$repo_agent")
     if [ ! -e ~/.pi/agent/agents/"$agent_name" ]; then
@@ -73,13 +75,13 @@ fi
 
 echo ""
 echo "Pi settings:"
-cp_if_exists ~/.pi/agent/settings.json "$SCRIPT_DIR/pi-settings.json"
+cp_if_exists ~/.pi/agent/settings.json "$PI_DIR/settings.json"
 
 echo ""
 echo "Pi extensions:"
 if [ -d ~/.pi/agent/extensions ]; then
-  mkdir -p "$SCRIPT_DIR/pi-extensions"
-  rsync -a --delete ~/.pi/agent/extensions/ "$SCRIPT_DIR/pi-extensions/"
+  mkdir -p "$PI_DIR/extensions"
+  rsync -a --delete ~/.pi/agent/extensions/ "$PI_DIR/extensions/"
   for f in ~/.pi/agent/extensions/*; do
     [ -e "$f" ] && echo "  ✓ $(basename "$f")"
   done
@@ -88,8 +90,8 @@ fi
 echo ""
 echo "Pi prompts:"
 if [ -d ~/.pi/agent/prompts ]; then
-  mkdir -p "$SCRIPT_DIR/pi-prompts"
-  rsync -a --delete ~/.pi/agent/prompts/ "$SCRIPT_DIR/pi-prompts/"
+  mkdir -p "$PI_DIR/prompts"
+  rsync -a --delete ~/.pi/agent/prompts/ "$PI_DIR/prompts/"
   for f in ~/.pi/agent/prompts/*; do
     [ -e "$f" ] && echo "  ✓ $(basename "$f")"
   done
@@ -109,5 +111,5 @@ else
   git diff --stat --cached
   echo ""
   echo "Review with: cd $(pwd) && git diff"
-  echo "Commit with: git add claude/ && git commit -m 'Update claude config'"
+  echo "Commit with: git add claude/ pi/ && git commit -m 'Update claude/pi config'"
 fi
