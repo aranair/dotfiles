@@ -45,6 +45,7 @@
 
 ## Shell Rules
 - **Never use `rm`**. Always use `trash` for deleting files.
+- **Use `prek`** instead of `pre-commit` for all pre-commit hook operations.
 
 ## Core Principles
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.

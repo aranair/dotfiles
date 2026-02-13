@@ -5,5 +5,5 @@
   "skills": [
     "~/.claude/skills"
   ],
-  "theme": "dark"
+  "theme": null
 }
