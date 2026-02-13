@@ -207,7 +207,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <CR> G
 
 " Dispatch
-nnoremap <F1> :AsyncRun 
+nnoremap <F1> :AsyncRun
 
 " Smooth-scroll
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -221,7 +221,7 @@ map <Leader>f <Plug>(easymotion-bd-w)
 map \ <Plug>(easymotion-prefix)
 
 " Search
-map <C-f> :Ag --mmap -i 
+map <C-f> :Ag --mmap -i
 
 " Nerdtree-git-Plug
 let g:NERDTreeGitStatusIndicatorMapCustom = {

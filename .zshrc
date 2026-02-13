@@ -9,7 +9,7 @@ ZSH=$HOME/.oh-my-zsh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH/oh-my-zsh.sh
 
-prompt_context () { }
+prompt_context () { true; }
 
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then

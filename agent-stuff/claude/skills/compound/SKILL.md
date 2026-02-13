@@ -10,6 +10,7 @@ Consolidate learnings from the current session into the project's `.notes/` dire
 ## Trigger
 
 Use when the user asks to:
+
 - "compound" or "/compound"
 - "save session notes"
 - "update notes from this session"
@@ -30,6 +31,7 @@ Use when the user asks to:
 4. **Append new entries** to the appropriate files:
 
    For `decisions.md`:
+
    ```markdown
    ### [YYYY-MM-DD] Decision Title
 
@@ -39,6 +41,7 @@ Use when the user asks to:
    ```
 
    For `gotchas.md`:
+
    ```markdown
    ### Title
 
@@ -46,11 +49,13 @@ Use when the user asks to:
    ```
 
    For `todo.md`:
+
    ```markdown
    - [ ] Task description
    ```
 
    For `session-log.md`:
+
    ```markdown
    ## YYYY-MM-DD
 

@@ -26,7 +26,7 @@ fi
 echo "✅ Pi settings installed!"
 echo ""
 echo "Installed:"
-echo "  ~/.pi/agent/agents/ ($(ls ~/.pi/agent/agents/*.md | wc -l | tr -d ' ') agents)"
+echo "  ~/.pi/agent/agents/ ($(find ~/.pi/agent/agents/ -name '*.md' | wc -l | tr -d ' ') agents)"
 echo "  ~/.pi/agent/settings.json"
 echo "  ~/.pi/agent/extensions/"
 echo "  ~/.pi/agent/prompts/"

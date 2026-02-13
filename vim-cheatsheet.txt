@@ -94,7 +94,7 @@ entering insert mode
     a - append after cursor
     A - append at end of line
     o - open (append) new line below
-    O - open (append) new line above        
+    O - open (append) new line above
 
 search
     / - search
@@ -113,7 +113,7 @@ search
     n - repeat search
     N - repeat search in opposite direction
     /\v'.+' - search using 'very magic mode', to avoid having to escape common characters
-    /\n\zs[a-z0-9] - use \zs flag to crop selection (in this case omitting the \n from the highlighted search result)   
+    /\n\zs[a-z0-9] - use \zs flag to crop selection (in this case omitting the \n from the highlighted search result)
 
 editing window
     q/ - show and edit searches in a buffer
@@ -173,7 +173,7 @@ windows
     Ctrl-+ - increase window size
     z6<CR> - make window 6 lines high
 
-    Ctrl-> - increase window width 
+    Ctrl-> - increase window width
     Ctrl-< - decrease window width
 
     Ctrl-x - exchange the window with the next one
@@ -257,8 +257,8 @@ spell checking
     zug - undo adding as good
     zuw - undo addings as bad
 
-    ~/.vim/spell/en.utf-8.add   
-    
+    ~/.vim/spell/en.utf-8.add
+
 #---------------------------------------------- INSERT MODE -------------------------------------------------
 3iGo - insert "Go" 3 times
 Ctrl-P - autocomplete
@@ -398,12 +398,12 @@ search and replace
 
     replace line breaks
         :%s/<Ctrl-V><Ctrl-M>//g
-        Where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M. 
+        Where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
 move
     :m 12 - move current line to after line 12
     :m 0 - move current line to before first line
-    :m $ - move current line to after last line 
+    :m $ - move current line to after last line
     :m7 - move current line to line 7
     :4m7 - move line 4 to line 7
     :4m$ - move line 4 the end of document

@@ -10,6 +10,7 @@ Initialize a notes directory for tracking learnings, bug fixes, and architectura
 ## Trigger
 
 Use when setting up a new project or when the user asks to:
+
 - "init notes"
 - "setup notes directory"
 - "add notes tracking"
@@ -18,16 +19,19 @@ Use when setting up a new project or when the user asks to:
 ## Instructions
 
 1. Create a `notes/` directory in the project root:
+
    ```bash
    mkdir -p notes
    ```
 
 2. Check if `CLAUDE.md` exists in the project root. If it does, add a reference to the notes directory near the top (after the title/description):
+
    ```markdown
    **See also:** `notes/` directory for learnings, bug fixes, and architectural decisions.
    ```
 
 3. If `CLAUDE.md` doesn't exist, create it with a basic structure:
+
    ```markdown
    # CLAUDE.md
 

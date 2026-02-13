@@ -1,6 +1,7 @@
 #!/bin/bash
 input=$(cat)
 
+# shellcheck disable=SC2034
 MODEL=$(echo "$input" | jq -r '.model.display_name // "Claude"')
 PERCENT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | xargs printf "%.0f")
 
