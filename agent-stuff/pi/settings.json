@@ -10,5 +10,10 @@
   "packages": [
     "npm:pi-interactive-shell",
     "npm:pi-powerline-footer"
-  ]
+  ],
+  "workingVibe": "zen",
+  "workingVibeMode": "generate",
+  "workingVibeModel": "anthropic/claude-haiku-4-5",
+  "workingVibeFallback": "Working",
+  "workingVibeRefreshInterval": 30
 }
