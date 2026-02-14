@@ -57,6 +57,18 @@ if [ -d ~/.pi/agent/prompts ]; then
 fi
 
 echo ""
+echo "Packages:"
+{
+  echo "# Pi packages to install via \`pi install\`"
+  echo "# One per line, e.g. npm:package-name"
+  pi list 2>/dev/null | grep '^\s*npm:' | sed 's/^[[:space:]]*//'
+} > "$SCRIPT_DIR/packages.txt"
+while IFS= read -r pkg; do
+  [[ -z "$pkg" || "$pkg" =~ ^# ]] && continue
+  echo "  ✓ $pkg"
+done < "$SCRIPT_DIR/packages.txt"
+
+echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 # Show what changed

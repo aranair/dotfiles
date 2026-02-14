@@ -1,0 +1,4 @@
+# Pi packages to install via `pi install`
+# One per line, e.g. npm:package-name
+npm:pi-interactive-shell
+npm:pi-powerline-footer
