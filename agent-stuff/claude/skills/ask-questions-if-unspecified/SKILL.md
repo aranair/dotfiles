@@ -1,8 +1,6 @@
-Skill file:
-
 ---
 name: ask-questions-if-unspecified
-description: Ask clarifying questions when a task is ambiguous or underspecified before implementing. Identifies missing objectives, acceptance criteria, scope, constraints, and environment details, then presents concise numbered questions with multiple-choice options and sensible defaults. Do not use automatically, only when invoked explicitly.
+description: Ask clarifying questions when a task is ambiguous or underspecified before implementing. Identifies missing objectives, acceptance criteria, scope, constraints, and environment details, then presents concise numbered questions with multiple-choice options and sensible defaults. Do not use automatically, only when invoked explicitly
 ---
 
 # Ask Questions If Underspecified
@@ -16,6 +14,7 @@ Ask the minimum set of clarifying questions needed to avoid wrong work; do not s
 ### 1) Decide whether the request is underspecified
 
 Treat a request as underspecified if after exploring how to perform the work, some or all of the following are not clear:
+
 - Define the objective (what should change vs stay the same)
 - Define "done" (acceptance criteria, examples, edge cases)
 - Define scope (which files/components/users are in/out)
@@ -30,6 +29,7 @@ If multiple plausible interpretations exist, assume it is underspecified.
 Ask 1-5 questions in the first pass. Prefer questions that eliminate whole branches of work.
 
 Make questions easy to answer:
+
 - Optimize for scannability (short, numbered questions; avoid paragraphs)
 - Offer multiple-choice options when possible
 - Suggest reasonable defaults when appropriate (mark them clearly as the default/recommended choice; bold the recommended choice in the list, or if you present options in a code block, put a bold "Recommended" line immediately above the block and also tag defaults inside the block)
@@ -41,10 +41,12 @@ Make questions easy to answer:
 ### 3) Pause before acting
 
 Until must-have answers arrive:
+
 - Do not run commands, edit files, or produce a detailed plan that depends on unknowns
 - Do perform a clearly labeled, low-risk discovery step only if it does not commit you to a direction (e.g., inspect repo structure, read relevant config files)
 
 If the user explicitly asks you to proceed without answers:
+
 - State your assumptions as a short numbered list
 - Ask for confirmation; proceed only after they confirm or correct them
 

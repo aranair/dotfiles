@@ -27,6 +27,7 @@ This skill guides you through filling out pull request templates that follow bes
 ### Step 1: Get the Template
 
 Copy the PR template to work with:
+
 ```bash
 cp .github/PULL_REQUEST_TEMPLATE.md pr-description.txt
 ```
@@ -36,6 +37,7 @@ cp .github/PULL_REQUEST_TEMPLATE.md pr-description.txt
 ### Step 2: Create Draft PR (if needed)
 
 If you haven't created the PR yet:
+
 ```bash
 gh pr create --draft \
   --title "WIP: [Brief Description]" \
@@ -44,6 +46,7 @@ gh pr create --draft \
 ```
 
 **Important**:
+
 - Use `--base BRANCH_NAME` if targeting non-main branch
 - The PR number will be in `draft_pr_info.txt`
 - Write output to file first, then read it (terminal can be unreliable)
@@ -51,6 +54,7 @@ gh pr create --draft \
 ### Step 3: Fetch PR Data
 
 **IF NEEDED: Use the `fetch-pr-data` skill** to gather all PR information. This will create files:
+
 - `pr_{pr_number}_info.json` - PR details, files, reviews
 - `pr_{pr_number}_diff.txt` - Complete code diff
 - `pr_{pr_number}_review_comments.json` - Inline comments
@@ -64,11 +68,13 @@ See the fetch-pr-data skill for detailed information on what each file contains 
 Based on gathered information, systematically analyze:
 
 **Scope Analysis**:
+
 - Number of files changed
 - Total lines added/removed
 - Affected directories/modules
 
 **Type Classification**:
+
 - New features (adds new capabilities)
 - Bug fixes (corrects existing functionality)
 - Refactoring (improves code without changing behavior)
@@ -76,12 +82,14 @@ Based on gathered information, systematically analyze:
 - Documentation (updates docs)
 
 **Risk Assessment**:
+
 - Core systems affected?
 - Database migrations?
 - API contract changes?
 - Backward compatibility concerns?
 
 **Customer Impact**:
+
 - User-facing changes?
 - Internal/developer-only changes?
 - Performance implications?
@@ -92,20 +100,24 @@ Based on gathered information, systematically analyze:
 Fill these sections based on your analysis:
 
 **Summary**:
+
 - Write 2-3 sentences explaining what and why
 - Reference commit messages and file changes
 - Be specific about the problem solved
 
 **Jira Task**:
+
 - Use provided ticket URL, or
 - Write "No ticket needed" with brief justification
 
 **Public Release Notes**:
+
 - If customer-facing: Write concise user-facing description
 - If internal: Write "No customer-facing changes"
 
 **Release Change Category**:
 Select exactly one:
+
 - [1] Internal Only - Tests, build scripts, refactoring, tooling
 - [2] Bug Fix - Fixes existing functionality, errors, performance
 - [3] New Feature - Adds new user-facing capabilities
@@ -115,26 +127,31 @@ Select exactly one:
 
 **Behind Feature Flag**:
 Scan code for feature flag patterns:
+
 - `featureFlag`, `feature-flag`, `FeatureFlag`
 - Configuration files with flag definitions
 - Conditional rendering based on flags
 - Environment-specific toggles
 
 Check these locations:
+
 - `environments/common/npm/feature-flags/src/types.ts` - Flag names
 - `environments/common/npm/feature-flags/src/flags.ts` - DevelopmentOnly/Experimental
 
 Select one:
+
 - [1] Yes - With Feature Flag (list flag names)
 - [2] Partial - Some changes behind flag
 - [3] No - Not using feature flag
 
 **Feature Flags**:
+
 - List found flags, or
 - Write "None"
 
 **Checkboxes**:
 Auto-tick relevant boxes based on your changes:
+
 - Tests added/updated?
 - Documentation updated?
 - Backward compatible?
@@ -147,14 +164,15 @@ Auto-tick relevant boxes based on your changes:
 [How to write impact analysis](environments/rulebank/general/impact-analysis.md)
 [How to access the impact level](environments/rulebank/general/impact-level.md)
 
-
 Based on guidelines, write impact analysis with length appropriate to level:
+
 - **Low Impact** (A paragraph): Minor changes, well-isolated
 - **Medium Impact** (2-3 paragraph): Moderate changes, some dependencies
 - **High Impact** (Depends on change, be explicit but not verbose): Major changes, system-wide effects
 Note that behind FF always suggests a lower impact level since it has limited visibility to customers.
 
 Select impact level:
+
 - [ ] 1 - High: Core system changes, significant risk
 - [ ] 2 - Medium: Moderate scope, some risk
 - [ ] 3 - Low: Isolated changes, minimal risk
@@ -170,30 +188,34 @@ and QA Test:
 These are tests that our QA colleagues execute mannually from the frontend, rarely do they also test from postman.
 If there's a FF involved it should inclue the various cases.
 
-
 Write appropriate test plan based on change type:
 
 **For New Features**:
+
 - Manual testing steps (numbered list)
 - Edge cases tested
 - Integration points verified
 
 **For Bug Fixes**:
+
 - Reproduction steps for original bug
 - Verification that bug is fixed
 - Related functionality checked
 
 **For Refactoring**:
+
 - Existing functionality verified
 - No behavior changes confirmed
 
 **For API Changes**:
+
 - Contract compatibility verified
 - Client impact assessed
 
 ### Step 8: Template Preservation Rules
 
 🚨 **CRITICAL**: Your PR description must be a 1:1 copy of the template with only:
+
 - Content filled in (text after headers)
 - Appropriate checkboxes ticked `[x]`
 - Do not use sub headers, it breaks the CI check parser (like ### QA test within ## Test Plan)
@@ -205,6 +227,7 @@ Write appropriate test plan based on change type:
 ✅ All checkbox options (tick only one per section)
 
 **Example of correct checkbox handling**:
+
 ```
 ## Level of Impact
 Please select exactly one option.
@@ -218,6 +241,7 @@ Please select exactly one option.
 ### Step 9: Present for Review
 
 Present the complete filled template to the user and ask:
+
 1. "Does this accurately describe your changes?"
 2. "Would you like any sections revised?"
 3. "Ready to create the final PR?"
@@ -229,6 +253,7 @@ Wait for user confirmation before proceeding.
 Once approved:
 
 1. **Update PR with complete description**:
+
    ```bash
    gh pr edit {PR-number} \
      --title "[Category]: [Concise summary]" \
@@ -247,16 +272,19 @@ Once approved:
    - `AiTools(dependency): add stations-crud dependency`
 
 2. **Mark as ready for review**:
+
    ```bash
    gh pr ready {PR-number} > pr_ready_result.txt && cat pr_ready_result.txt
    ```
 
 3. **Verify PR was updated**:
+
    ```bash
    gh pr view {PR-number}
    ```
 
 4. **Clean up temporary files**:
+
    ```bash
    rm pr-description.txt draft_pr_info.txt pr_*
    ```
