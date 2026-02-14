@@ -1,5 +1,3 @@
-filetype off
-" set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin()
 
 Plug 'tpope/vim-fugitive'
@@ -8,7 +6,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-unimpaired'
+Plug 'godlygeek/tabular'
+" Plug 'preservim/vim-markdown'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
@@ -17,9 +17,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/L9'
 Plug 'rking/ag.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
-Plug 'vim-syntastic/syntastic'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -31,18 +31,28 @@ Plug 'metakirby5/codi.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'github/copilot.vim'
+Plug 'google/vim-jsonnet'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
 syntax enable
 
-colorscheme northland
+" colorscheme solarized
+" highlight clear SignColumn
+" highlight GitGutterAdd ctermfg=green
+" highlight GitGutterChange ctermfg=yellow
+" highlight GitGutterDelete ctermfg=red
+" highlight GitGutterChangeDelete ctermfg=yellow
+" let g:solarized_termtrans = 1 
+colorscheme papercolor
+" colorscheme northland
 " colorscheme Monokai
 
 let mapleader = "\<Space>"
 
 set autoindent
-set background=dark
+set background=light
 set number
 " set t_Co=256
 set pastetoggle=<F2>
@@ -57,11 +67,8 @@ set ruler                 " Always show info along bottom."
 set laststatus=2          " last window always has a statusline"
 set smarttab              " use tabs at the start of a line, spaces elsewhere"
 set smartindent
-set colorcolumn=100
+" set colorcolumn=100
 set statusline+=%F
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 set noswapfile
 
 " Persistent undo
@@ -79,8 +86,11 @@ autocmd FileType scss  setlocal shiftwidth=2 tabstop=2
 autocmd FileType css   setlocal shiftwidth=2 tabstop=2
 autocmd FileType html  setlocal shiftwidth=2 tabstop=2
 
+" vim-fugitive
+let g:netrw_http_cmd = 'wget -q -O'
+
+
 " FZF
-set rtp+=/Users/homan/.fzf/bin/fzf
 " let g:fzf_command_prefix = 'Fzf'
 set rtp+=~/.fzf
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -88,9 +98,9 @@ nmap <c-p> :FZF<CR>
 nmap ; :Buffers<CR>
 
 " vim-javascript
-let g:javascript_Plug_jsdoc = 1
-let g:javascript_Plug_flow = 1
-let g:javascript_Plug_ngdoc = 0
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_ngdoc = 0
 let g:javascript_conceal_function             = "ƒ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
@@ -102,35 +112,11 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 
-" Eslint
-let g:syntastic_javascript_jslint_args = "--white --nomen --regexp --browser --devel --windows --sloppy --vars"
-let g:syntastic_javascript_jslint_args = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules/"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
-let g:syntastic_javascript_flow_exe = 'flow'
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules'
-
 let g:flow#showquickfix = 1
 let g:flow#timeout = 4
 let g:flow#enable = 1
 
 let g:go_autodetect_gopath = 1
-
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_javascript_flow_executable = "$(npm bin)/flow"
-let g:ale_javascript_eslint_executable = "$(npm bin)/eslint"
-let g:ale_javascript_eslint_options = "--rulesdir /Users/homan/Projects/tulip/tools/eslint-rules/lib/rules --ignore-path /Users/homan/Projects/tulip/environments/.eslintignore"
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_enter = 1
-let g:ale_set_quickfix = 0
-let g:ale_linters = { 'javascript': ['eslint', 'flow'], 'go': ['gometalinter'] }
 
 "Use locally installed flow
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
@@ -145,29 +131,15 @@ endif
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_bold = "1"
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
-let g:airline_powerline_fonts = 1
+let g:markdown_fenced_languages = ['html', 'python', 'ruby']
+
 " air-line
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'papercolor'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
 
 " vim-go
 let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck']
@@ -184,7 +156,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <tab> %
 vnoremap <tab> %
-nnoremap <Leader>1 yypk
+autocmd FileType ruby map <Leader>1 :w<CR>:!ruby -c %<CR>
+" autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <CR> G
 
@@ -194,13 +167,6 @@ nnoremap <F1> :AsyncRun
 " Smooth-scroll
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-
-" Easymotion
-map <Leader>s <Plug>(easymotion-s)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>f <Plug>(easymotion-bd-w)
-map \ <Plug>(easymotion-prefix)
 
 " Search
 map <C-f> :Ag --mmap -i 
@@ -226,7 +192,7 @@ map <Leader>t :tabnew<CR>
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
-let g:NERDTreeWinSize=45
+let g:NERDTreeWinSize=55
 let g:NERDTreeIgnore=['\~$', 'vendor', '.bundle']
 
 " Writes
@@ -259,6 +225,10 @@ vmap <Leader>P "+P
 set backup                     " Enable creation of backup file.
 set backupdir=~/.vim/backup/   " Where backups will go.
 set directory=~/.vim/swp/     " Where temporary files will go.
+
+" Git Browse
+map <Leader>gg :GBrowse<cr>
+map <Leader>gb :Git blame<cr>
 
 " vim-gitgutter
 set updatetime=300
@@ -301,38 +271,11 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 set cursorline
 nnoremap <Leader>c :set cursorcolumn!<CR>
 
-hi TabLineFill term=NONE cterm=NONE ctermbg=233
-hi TabLineSel term=NONE cterm=NONE ctermbg=240
-hi TabLine term=NONE cterm=NONE ctermbg=233
 hi CursorLine   cterm=NONE ctermbg=NONE
 " hi CursorLine   cterm=NONE ctermbg=234
 " hi CursorLineNr cterm=NONE ctermbg=NONE
 hi CursorLineNr term=bold cterm=bold ctermfg=012 gui=bold
 hi CursorColumn cterm=NONE ctermbg=237
-
-" GOYO
-function! s:goyo_enter()
-  set number
-endfunction
-
-function! s:goyo_leave()
-  set showtabline=2
-  hi TabLineFill term=NONE cterm=NONE ctermbg=233
-  hi TabLineSel term=NONE cterm=NONE ctermbg=240
-  hi TabLine term=NONE cterm=NONE ctermbg=233
-  hi CursorLine   cterm=NONE ctermbg=237
-  hi CursorColumn cterm=NONE ctermbg=237
-
-  set stal=2
-  set tabline=%!MyTabLine()
-  set number
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-nnoremap <Leader>z :Goyo<CR>
-let g:goyo_width = 200
-let g:goyo_height = 100
 
 " Strip White space
 function! <SID>StripTrailingWhitespaces()
@@ -363,13 +306,22 @@ set foldtext=NeatFoldText()
 set foldcolumn=2
 
 " Colorscheme overrides
-hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
+" Dark background - white/gray text
+" hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
+" Light background - dark text
+" hi Normal ctermfg=235 ctermbg=NONE cterm=NONE guifg=#272822 guibg=NONE gui=NONE
+
 " hi LineNr ctermbg=235
 hi foldcolumn ctermbg=None
 " hi Folded ctermbg=none
 hi VertSplit ctermbg=None ctermfg=NONE cterm=NONE
 " hi SignColumn ctermbg=235
+"
+" Dark background
 hi Normal ctermbg=none
+" Light background
+" hi Normal ctermbg=none
+"
 hi LineNr ctermbg=none
 hi Folded ctermbg=none
 hi NonText ctermbg=none
@@ -377,6 +329,13 @@ hi SpecialKey ctermbg=none
 " hi VertSplit ctermbg=none
 hi SignColumn ctermbg=none
 
+" Dark background
 hi TabLineFill ctermbg=None
 hi TabLine ctermbg=None
 hi TabLineSel ctermfg=BLUE ctermbg=None
+hi TabLineSel ctermfg=BLUE
+"
+" Light background
+" hi TabLineFill ctermbg=None
+" hi TabLine ctermbg=None ctermfg=240
+" hi TabLineSel ctermfg=235 ctermbg=None cterm=bold

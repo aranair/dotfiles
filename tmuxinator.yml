@@ -33,10 +33,10 @@ windows:
       panes:
         - vim
         - cd ~/Projects/tulip
-  - server:
+  - mulch:
       layout: main-vertical
       panes:
-        - cd ~/Projects/tulip
+        - cd ~/Projects/mulch
   - prod:
       layout: main-vertical
       panes:
