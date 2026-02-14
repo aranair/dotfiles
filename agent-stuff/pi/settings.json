@@ -5,7 +5,7 @@
   "skills": [
     "~/.claude/skills"
   ],
-  "theme": "light",
+  "theme": "dark-soft-diff",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-interactive-shell",
