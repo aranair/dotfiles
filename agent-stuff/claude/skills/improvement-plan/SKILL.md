@@ -60,7 +60,6 @@ Sort by priority, then by impact/effort ratio (high impact + low effort first).
 ### 5. Write the plan
 
 Determine the notes directory:
-
 1. Check for `notes/` in project root (prefer this)
 2. Check for `.notes/` in project root
 3. If neither exists, create `notes/`
@@ -109,7 +108,6 @@ Numbered list grouping items into logical phases or sprints.
 ### 6. Summarize to the user
 
 After writing the file, print:
-
 - Path to the generated file
 - Count of improvements found per priority level
 - Top 3 highest-priority items as a quick preview
