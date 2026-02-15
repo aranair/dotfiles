@@ -5,15 +5,10 @@
   "skills": [
     "~/.claude/skills"
   ],
-  "theme": "dark-soft-diff",
+  "theme": "dark",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-interactive-shell",
     "npm:pi-screenshots-picker"
-  ],
-  "workingVibe": "zen",
-  "workingVibeMode": "generate",
-  "workingVibeModel": "anthropic/claude-haiku-4-5",
-  "workingVibeFallback": "Working",
-  "workingVibeRefreshInterval": 30
+  ]
 }

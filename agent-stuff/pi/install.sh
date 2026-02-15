@@ -27,10 +27,16 @@ fi
 if command -v jq &>/dev/null && [ -f "$SCRIPT_DIR/settings.json" ]; then
   echo ""
   echo "Installing pi packages..."
+  # Get already-installed packages
+  installed=$(pi list 2>/dev/null | grep '^\s*npm:' | sed 's/^[[:space:]]*//')
   while IFS= read -r pkg; do
     [ -z "$pkg" ] && continue
-    echo "  → pi install $pkg"
-    pi install "$pkg"
+    if echo "$installed" | grep -qxF "$pkg"; then
+      echo "  ✓ $pkg (already installed)"
+    else
+      echo "  → pi install $pkg"
+      pi install "$pkg"
+    fi
   done < <(jq -r '.packages[]? // empty' "$SCRIPT_DIR/settings.json")
 fi
 

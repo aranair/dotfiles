@@ -18,7 +18,7 @@ cp "$SCRIPT_DIR/hooks/"*.sh ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh
 
 # Skills
-cp -r "$SCRIPT_DIR/skills/"* ~/.claude/skills/
+rsync -a "$SCRIPT_DIR/skills/" ~/.claude/skills/
 
 # Plugins registry
 cp "$SCRIPT_DIR/plugins/installed_plugins.json" ~/.claude/plugins/
