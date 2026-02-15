@@ -9,7 +9,7 @@
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-interactive-shell",
-    "npm:pi-powerline-footer"
+    "npm:pi-screenshots-picker"
   ],
   "workingVibe": "zen",
   "workingVibeMode": "generate",

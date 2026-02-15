@@ -57,16 +57,21 @@ if [ -d ~/.pi/agent/prompts ]; then
 fi
 
 echo ""
-echo "Packages:"
-{
-  echo "# Pi packages to install via \`pi install\`"
-  echo "# One per line, e.g. npm:package-name"
-  pi list 2>/dev/null | grep '^\s*npm:' | sed 's/^[[:space:]]*//'
-} > "$SCRIPT_DIR/packages.txt"
-while IFS= read -r pkg; do
-  [[ -z "$pkg" || "$pkg" =~ ^# ]] && continue
-  echo "  ✓ $pkg"
-done < "$SCRIPT_DIR/packages.txt"
+echo "Packages (in settings.json):"
+if command -v jq &>/dev/null; then
+  # Collect installed packages into an array (bash 3 compatible)
+  pkgs=()
+  while IFS= read -r line; do
+    pkgs+=("$line")
+  done < <(pi list 2>/dev/null | grep '^\s*npm:' | sed 's/^[[:space:]]*//')
+  # Build JSON array and update settings.json in place
+  pkg_json=$(printf '%s\n' "${pkgs[@]}" | jq -R . | jq -s .)
+  tmp=$(mktemp)
+  jq --argjson pkgs "$pkg_json" '.packages = $pkgs' "$SCRIPT_DIR/settings.json" > "$tmp" && mv "$tmp" "$SCRIPT_DIR/settings.json"
+  for pkg in "${pkgs[@]}"; do
+    echo "  ✓ $pkg"
+  done
+fi
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
