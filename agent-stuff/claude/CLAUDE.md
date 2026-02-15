@@ -6,6 +6,7 @@
 - If something goes sideways, STOP and re-plan immediately - don't keep pushing
 - Use plan mode for verification steps, not just building
 - Write detailed specs upfront to reduce ambiguity
+- At the end of the planning, ask yourself what are the edge cases you didn't consider?
 
 ### 2. Subagent Strategy to keep main context window clean
 
