@@ -5,10 +5,11 @@
   "skills": [
     "~/.claude/skills"
   ],
-  "theme": "dark",
+  "theme": "light",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-interactive-shell",
-    "npm:pi-screenshots-picker"
+    "npm:pi-screenshots-picker",
+    "npm:pi-mcp-adapter"
   ]
 }

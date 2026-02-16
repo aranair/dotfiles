@@ -11,6 +11,7 @@
 ### 2. Subagent Strategy to keep main context window clean
 
 - Offload research, exploration, and parallel analysis to subagents
+- Always use Context7 MCP when you need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 - For complex problems, throw more compute at it via subagents
 - One task per subagent for focused execution
 
