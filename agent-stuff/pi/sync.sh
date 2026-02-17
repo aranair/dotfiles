@@ -57,6 +57,28 @@ if [ -d ~/.pi/agent/prompts ]; then
 fi
 
 echo ""
+echo "Skills:"
+if [ -d ~/.pi/agent/skills ]; then
+  mkdir -p "$SCRIPT_DIR/skills"
+  for skill_dir in ~/.pi/agent/skills/*/; do
+    [ -d "$skill_dir" ] || continue
+    skill_name=$(basename "$skill_dir")
+    mkdir -p "$SCRIPT_DIR/skills/$skill_name"
+    rsync -a --delete "$skill_dir" "$SCRIPT_DIR/skills/$skill_name/"
+    echo "  ✓ $skill_name"
+  done
+  # Remove skills from repo that no longer exist locally
+  for repo_skill in "$SCRIPT_DIR/skills/"/*/; do
+    [ -d "$repo_skill" ] || continue
+    skill_name=$(basename "$repo_skill")
+    if [ ! -d ~/.pi/agent/skills/"$skill_name" ]; then
+      rm -rf "$repo_skill"
+      echo "  ✗ $skill_name (removed, no longer installed)"
+    fi
+  done
+fi
+
+echo ""
 echo "Packages (in settings.json):"
 if command -v jq &>/dev/null; then
   # Collect installed packages into an array (bash 3 compatible)

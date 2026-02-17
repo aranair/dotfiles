@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "Installing Pi settings from $SCRIPT_DIR..."
 
 # Create directories
-mkdir -p ~/.pi/agent/{agents,extensions,prompts}
+mkdir -p ~/.pi/agent/{agents,extensions,prompts,skills}
 
 # Agents
 cp "$SCRIPT_DIR/agents/"*.md ~/.pi/agent/agents/
@@ -21,6 +21,11 @@ fi
 # Prompts
 if [ -d "$SCRIPT_DIR/prompts" ]; then
   cp -r "$SCRIPT_DIR/prompts/"* ~/.pi/agent/prompts/
+fi
+
+# Skills
+if [ -d "$SCRIPT_DIR/skills" ]; then
+  rsync -a "$SCRIPT_DIR/skills/" ~/.pi/agent/skills/
 fi
 
 # Packages (from settings.json)
@@ -48,4 +53,5 @@ echo "  ~/.pi/agent/agents/ ($(find ~/.pi/agent/agents/ -name '*.md' | wc -l | t
 echo "  ~/.pi/agent/settings.json"
 echo "  ~/.pi/agent/extensions/"
 echo "  ~/.pi/agent/prompts/"
+echo "  ~/.pi/agent/skills/ ($(find ~/.pi/agent/skills/ -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ') skills)"
 echo "  packages ($(jq -r '.packages | length' "$SCRIPT_DIR/settings.json" 2>/dev/null || echo 0) packages)"
