@@ -220,7 +220,7 @@ map <Leader>f <Plug>(easymotion-bd-w)
 map \ <Plug>(easymotion-prefix)
 
 " Search
-map <C-f> :Ag --mmap -i
+map <C-f> :Ag --mmap -i 
 
 " Nerdtree-git-Plug
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -261,6 +261,13 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" Open current line on GitHub
+nnoremap <Leader>gg :.GBrowse<CR>
+vnoremap <Leader>gg :GBrowse<CR>
+
+" Git blame
+nnoremap <Leader>gb :Git blame<CR>
 
 " Copy paste with <Space>y/p
 vmap <Leader>y "+y

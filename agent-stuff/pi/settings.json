@@ -10,7 +10,6 @@
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-interactive-shell",
-    "npm:pi-screenshots-picker",
-    "npm:pi-mcp-adapter"
+    "npm:pi-screenshots-picker"
   ]
 }

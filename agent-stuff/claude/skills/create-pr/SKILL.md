@@ -37,13 +37,7 @@ git diff origin/$BASE...HEAD
 git log origin/$BASE..HEAD --oneline
 ```
 
-**Find the repo's PR template.** Search for `PULL_REQUEST_TEMPLATE` in these locations (in order):
-
-1. `.github/PULL_REQUEST_TEMPLATE.md`
-2. `PULL_REQUEST_TEMPLATE.md`
-3. `docs/PULL_REQUEST_TEMPLATE.md`
-
-If found, read the template — it defines the exact sections and structure for the PR body. Use it as-is; do not add, remove, or reorder sections.
+**Read the repo's PR template** at `.github/PULL_REQUEST_TEMPLATE.md`. It defines the exact sections and structure for the PR body. Use it as-is; do not add, remove, or reorder sections.
 
 ### 2. Prompt for Jira Ticket
 
