@@ -76,7 +76,7 @@ Use `gh pr create --draft` with the approved body. Always pass the body via HERE
 
 Generate concise title (under 70 chars) from:
 
-1. Categorization of the change (e.g., chore, feature, bugfix, docs)
+1. Categorization of the change (e.g., chore, feat, bugfix, docs)
 1. Jira ticket prefix if provided: `[PLAT-123]`
 2. Brief description of change
 
