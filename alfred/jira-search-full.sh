@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=all
 
 # Searches Jira issues using JQL search (replaces deprecated GET /rest/api/3/search)
 # Usage: ./jira-search-full.sh "search terms"
