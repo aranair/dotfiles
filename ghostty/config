@@ -13,9 +13,6 @@ macos-option-as-alt = true
 # Map Option+Backspace to Ctrl+W (delete word backward), matching standard terminal behavior
 keybind = opt+backspace=text:\x17
 
-# Hide the native macOS titlebar for a cleaner window look
-macos-titlebar-style = hidden
-
 # Automatically copy selected text to the system clipboard
 copy-on-select = clipboard
 
