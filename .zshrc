@@ -40,6 +40,7 @@ alias tlc='cd ~/Projects/cotton'
 alias ts='tailscale'
 alias cl='claude --allow-dangerously-skip-permissions'
 alias rm='trash'
+alias darkmode='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"'
 alias b='but'
 
 # Bat / Fzf
