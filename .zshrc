@@ -18,6 +18,7 @@ fi
 
 alias k="kubectl"
 alias ks="kubectl -n kube-system"
+alias km="kubectl -n monitoring"
 alias gl="git pull"
 alias gs="git status"
 alias gb="git branch"
@@ -26,7 +27,6 @@ alias gcb="git checkout -b"
 alias gcm="git commit -m"
 alias gpo="git push origin"
 alias gpof="git push origin --force-with-lease"
-alias gph="git push heroku"
 alias grh="git reset HEAD"
 alias stree='open -a SourceTree .'
 alias be="bundle exec"
@@ -37,11 +37,11 @@ alias tlm="cd ~/Projects/tulip/environments/cloud/services/src/tulip/migrations"
 alias tlh="cd ~/Projects/tulip/environments/cloud/kubernetes/helm"
 alias tlw="cd ~/Projects/tulip/environments/cloud/services/src/tulip/tulipweb/"
 alias tlc='cd ~/Projects/cotton'
+alias ll="eza --icons --long --header --git --all --sort type"
 alias ts='tailscale'
 alias cl='claude --allow-dangerously-skip-permissions'
 alias rm='trash'
 alias darkmode='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"'
-alias b='but'
 
 # Bat / Fzf
 alias b="bat"
@@ -76,7 +76,7 @@ export PATH="$PATH:/path/to/elixir/bin"
 # Ruby
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-export NOTES_DIRECTORY="/Users/homan/Dropbox/notes"
+# export NOTES_DIRECTORY="/Users/homan/Library/CloudStorage/Dropbox/notes"
 
 # Opens the github page for the current git repository in your browser
 function gh() {
@@ -117,5 +117,4 @@ export PATH="$PATH:/Users/homan/.avail/bin"
 export PATH="/opt/homebrew/opt/trash-cli/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# GitButler CLI completions
-eval "$(but completions zsh)"
+eval "$(zoxide init zsh)"
