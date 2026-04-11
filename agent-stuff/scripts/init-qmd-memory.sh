@@ -32,10 +32,11 @@ Collections created:
   coding-notes -> <dropbox-root>/notes   (Coding notes)
   lessons      -> <memory-root>/lessons  (Generic lessons from all agents)
   notes        -> <memory-root>/notes    (Personal notes)
-  aboutme      -> <memory-root>/aboutme  (Context and information about me)
-  ideas        -> <memory-root>/ideas    (Brainstorms and ideas)
-  links        -> <memory-root>/links    (Saved links with descriptions)
-  research     -> <memory-root>/research (Researched ideas)
+  aboutme      -> <memory-root>/aboutme       (Context and information about me)
+  ideas        -> <memory-root>/ideas         (Brainstorms and ideas)
+  links        -> <memory-root>/links         (Saved links with descriptions)
+  meeting-notes -> <memory-root>/meeting-notes (Meeting notes)
+  research     -> <memory-root>/research      (Researched ideas)
 EOF
 }
 
@@ -147,6 +148,7 @@ notes|$MEMORY_ROOT/notes|Personal notes
 aboutme|$MEMORY_ROOT/aboutme|Context and information about me
 ideas|$MEMORY_ROOT/ideas|Brainstorms and ideas
 links|$MEMORY_ROOT/links|Saved links with descriptions
+meeting-notes|$MEMORY_ROOT/meeting-notes|Meeting notes
 research|$MEMORY_ROOT/research|Researched ideas
 EOF
 
@@ -172,4 +174,5 @@ echo "  notes        -> $MEMORY_ROOT/notes"
 echo "  aboutme      -> $MEMORY_ROOT/aboutme"
 echo "  ideas        -> $MEMORY_ROOT/ideas"
 echo "  links        -> $MEMORY_ROOT/links"
+echo "  meeting-notes -> $MEMORY_ROOT/meeting-notes"
 echo "  research     -> $MEMORY_ROOT/research"
