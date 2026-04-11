@@ -35,6 +35,7 @@ fi
 echo ""
 echo "Settings:"
 cp_if_exists ~/.pi/agent/settings.json "$SCRIPT_DIR/settings.json"
+cp_if_exists ~/.pi/agent/mcp.json "$SCRIPT_DIR/mcp.json"
 
 echo ""
 echo "Extensions:"
