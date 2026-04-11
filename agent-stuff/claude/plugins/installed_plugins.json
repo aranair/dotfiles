@@ -1,4 +1,15 @@
 {
   "version": 2,
-  "plugins": {}
+  "plugins": {
+    "osgrep@osgrep": [
+      {
+        "scope": "user",
+        "installPath": "/Users/homan/.claude/plugins/cache/osgrep/osgrep/0.4.3",
+        "version": "0.4.3",
+        "installedAt": "2026-02-20T02:25:27.268Z",
+        "lastUpdated": "2026-02-20T02:25:27.268Z",
+        "gitCommitSha": "9f2faf7e52783d622a583f5250f81ab24cee7864"
+      }
+    ]
+  }
 }

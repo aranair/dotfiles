@@ -37,7 +37,13 @@ git diff origin/$BASE...HEAD
 git log origin/$BASE..HEAD --oneline
 ```
 
-**Read the repo's PR template** at `.github/PULL_REQUEST_TEMPLATE.md`. It defines the exact sections and structure for the PR body. Use it as-is; do not add, remove, or reorder sections.
+**Find the repo's PR template.** Search for `PULL_REQUEST_TEMPLATE` in these locations (in order):
+
+1. `.github/PULL_REQUEST_TEMPLATE.md`
+2. `PULL_REQUEST_TEMPLATE.md`
+3. `docs/PULL_REQUEST_TEMPLATE.md`
+
+If found, read the template — it defines the exact sections and structure for the PR body. Use it as-is; do not add, remove, or reorder sections.
 
 ### 2. Prompt for Jira Ticket
 
@@ -70,7 +76,7 @@ Use `gh pr create --draft` with the approved body. Always pass the body via HERE
 
 Generate concise title (under 70 chars) from:
 
-1. Categorization of the change (e.g., chore, feat, bugfix, docs)
+1. Categorization of the change (e.g., chore, feature, bugfix, docs)
 1. Jira ticket prefix if provided: `[PLAT-123]`
 2. Brief description of change
 

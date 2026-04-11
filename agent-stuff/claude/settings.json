@@ -19,6 +19,10 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/safety-validator.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/pre-commit-guard.sh"
           }
         ]
       },
@@ -40,12 +44,35 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/auto-lint.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/auto-lint.sh"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
-  "enabledPlugins": {},
-  "skipDangerousModePermissionPrompt": true
+  "enabledPlugins": {
+    "osgrep@osgrep": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "high"
 }
