@@ -4,7 +4,7 @@
 - **Root Cause Over Surface Fixes**: Find root causes. Avoid temporary fixes unless the user explicitly asks for one.
 - **Minimal Impact**: Change only what is necessary. Avoid unrelated refactors.
 - **Verify Before Declaring Success**: Never claim success without stating what you verified.
-- **Self-Improvement**: Review lessons in `.notes/lessons.md` and apply them.
+- **Self-Improvement**: Review lessons in memory and `.notes/lessons.md` and apply them.
 
 ## Scope of These Defaults
 
@@ -35,11 +35,11 @@
 
 ### Task Management
 
-1. **Plan First**: For non-trivial work, write a plan to `.notes/todo.md` with checkable items.
+1. **Plan First**: For non-trivial work, write a plan first
 2. **Verify Plan**: Check in before implementation only when the user asked for a checkpoint or the work is high-risk, architectural, or ambiguous.
 3. **Track Progress**: Mark items complete as you go.
 4. **Explain Changes**: Give a high-level summary at each step.
-5. **Document Results**: Add a review to `.notes/todo.md`.
+5. **Document Results**:
 6. **Capture Project-Specific Lessons**: Update `.notes/lessons.md` after meaningful corrections.
 7. **Capture Project-Specific Decisions**: Add an Architecture Decision Record file in `.notes/adr/` to describe major decisions.
 8. **Major decision** = changes to interfaces, storage, architecture, workflows, or team conventions.
