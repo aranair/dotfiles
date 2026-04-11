@@ -43,6 +43,13 @@ alias cl='claude --allow-dangerously-skip-permissions'
 alias rm='trash'
 alias darkmode='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"'
 
+pwrap() {
+  local arg="$*"
+  pi -p "$arg"
+}
+
+alias p=pwrap
+
 # Bat / Fzf
 alias b="bat"
 alias ff="fzf --preview 'bat --color \"always\" {}'"
@@ -76,7 +83,7 @@ export PATH="$PATH:/path/to/elixir/bin"
 # Ruby
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-# export NOTES_DIRECTORY="/Users/homan/Library/CloudStorage/Dropbox/notes"
+export NOTES_DIRECTORY="/Users/homan/Dropbox/notes"
 
 # Opens the github page for the current git repository in your browser
 function gh() {
@@ -118,3 +125,10 @@ export PATH="/opt/homebrew/opt/trash-cli/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "/Users/homan/.bun/_bun" ] && source "/Users/homan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
