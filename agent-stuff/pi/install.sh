@@ -12,6 +12,9 @@ cp "$SCRIPT_DIR/agents/"*.md ~/.pi/agent/agents/
 
 # Settings
 cp "$SCRIPT_DIR/settings.json" ~/.pi/agent/settings.json
+if [ -f "$SCRIPT_DIR/mcp.json" ]; then
+  cp "$SCRIPT_DIR/mcp.json" ~/.pi/agent/mcp.json
+fi
 
 # Extensions
 if [ -d "$SCRIPT_DIR/extensions" ]; then
@@ -51,6 +54,9 @@ echo ""
 echo "Installed:"
 echo "  ~/.pi/agent/agents/ ($(find ~/.pi/agent/agents/ -name '*.md' | wc -l | tr -d ' ') agents)"
 echo "  ~/.pi/agent/settings.json"
+if [ -f "$SCRIPT_DIR/mcp.json" ]; then
+  echo "  ~/.pi/agent/mcp.json"
+fi
 echo "  ~/.pi/agent/extensions/"
 echo "  ~/.pi/agent/prompts/"
 echo "  ~/.pi/agent/skills/ ($(find ~/.pi/agent/skills/ -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ') skills)"
