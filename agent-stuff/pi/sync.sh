@@ -4,6 +4,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "Syncing live Pi config → dotfiles repo..."
 
+list_user_packages() {
+  pi list 2>/dev/null | awk '
+    /^User packages:/ { in_user_packages = 1; next }
+    in_user_packages && /^[^[:space:]]/ { exit }
+    in_user_packages && /^  [^[:space:]]/ {
+      sub(/^  /, "")
+      print
+    }
+  '
+}
+
 cp_if_exists() {
   if [ -e "$1" ]; then
     mkdir -p "$(dirname "$2")"
@@ -85,10 +96,16 @@ if command -v jq &>/dev/null; then
   # Collect installed packages into an array (bash 3 compatible)
   pkgs=()
   while IFS= read -r line; do
-    pkgs+=("$line")
-  done < <(pi list 2>/dev/null | grep '^\s*npm:' | sed 's/^[[:space:]]*//')
+    [ -n "$line" ] && pkgs+=("$line")
+  done < <(list_user_packages)
+
   # Build JSON array and update settings.json in place
-  pkg_json=$(printf '%s\n' "${pkgs[@]}" | jq -R . | jq -s .)
+  if [ "${#pkgs[@]}" -eq 0 ]; then
+    pkg_json='[]'
+  else
+    pkg_json=$(printf '%s\n' "${pkgs[@]}" | jq -R . | jq -s .)
+  fi
+
   tmp=$(mktemp)
   jq --argjson pkgs "$pkg_json" '.packages = $pkgs' "$SCRIPT_DIR/settings.json" > "$tmp" && mv "$tmp" "$SCRIPT_DIR/settings.json"
   for pkg in "${pkgs[@]}"; do

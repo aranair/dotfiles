@@ -11,6 +11,7 @@
   "packages": [
     "npm:pi-interactive-shell",
     "npm:pi-screenshots-picker",
-    "npm:pi-teams"
+    "npm:pi-teams",
+    "git:github.com/SamuelLHuber/pi-fff@v0.2.3"
   ]
 }

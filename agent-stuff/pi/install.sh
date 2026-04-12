@@ -4,6 +4,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "Installing Pi settings from $SCRIPT_DIR..."
 
+list_user_packages() {
+  pi list 2>/dev/null | awk '
+    /^User packages:/ { in_user_packages = 1; next }
+    in_user_packages && /^[^[:space:]]/ { exit }
+    in_user_packages && /^  [^[:space:]]/ {
+      sub(/^  /, "")
+      print
+    }
+  '
+}
+
 # Create directories
 mkdir -p ~/.pi/agent/{agents,extensions,prompts,skills}
 
@@ -36,7 +47,7 @@ if command -v jq &>/dev/null && [ -f "$SCRIPT_DIR/settings.json" ]; then
   echo ""
   echo "Installing pi packages..."
   # Get already-installed packages
-  installed=$(pi list 2>/dev/null | grep '^\s*npm:' | sed 's/^[[:space:]]*//')
+  installed=$(list_user_packages)
   while IFS= read -r pkg; do
     [ -z "$pkg" ] && continue
     if echo "$installed" | grep -qxF "$pkg"; then
