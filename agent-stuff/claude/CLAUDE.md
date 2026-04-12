@@ -4,12 +4,12 @@
 - **Root Cause Over Surface Fixes**: Find root causes. Avoid temporary fixes unless the user explicitly asks for one.
 - **Minimal Impact**: Change only what is necessary. Avoid unrelated refactors.
 - **Verify Before Declaring Success**: Never claim success without stating what you verified.
-- **Self-Improvement**: Review lessons in memory and `.notes/lessons.md` and apply them.
+- **Self-Improvement**: Review lessons in memory and the git repo root `.notes/lessons.md` and apply them.
 
 ## Scope of These Defaults
 
 - These are global default behaviors and should be applied in every repository unless higher-priority instructions override them.
-- Use `.notes/` workflows and global memory workflows everywhere, not only in specially configured repos.
+- Use git-repo-root `.notes/` workflows and global memory workflows everywhere, not only in specially configured repos.
 
 ## Instruction Precedence
 
@@ -40,8 +40,8 @@
 3. **Track Progress**: Mark items complete as you go.
 4. **Explain Changes**: Give a high-level summary at each step.
 5. **Document Results**:
-6. **Capture Project-Specific Lessons**: Update `.notes/lessons.md` after meaningful corrections.
-7. **Capture Project-Specific Decisions**: Add an Architecture Decision Record file in `.notes/adr/` to describe major decisions.
+6. **Capture Project-Specific Lessons**: Update the git repo root `.notes/lessons.md` after meaningful corrections.
+7. **Capture Project-Specific Decisions**: Add an Architecture Decision Record file in the git repo root `.notes/adr/` to describe major decisions.
 8. **Major decision** = changes to interfaces, storage, architecture, workflows, or team conventions.
 
 ### Demand Elegance (Balanced)
@@ -70,6 +70,7 @@
 - If I give you new ideas to brainstorm, capture them in a new markdown file in `~/Dropbox/memory/ideas/`.
 - If you learn something about how I think, capture it in `~/Dropbox/memory/aboutme/`.
 - If I give you meeting notes, capture them in `~/Dropbox/memory/meeting-notes`.
+- If I give you research, research and capture them in `~/Dropbox/memory/research`
 - If you need a place for general long-term notes, put them in `~/Dropbox/memory/notes/`.
 - When unsure about something, query using qmd mcp if available. If that comes up with nothing, add a note in `~/Dropbox/memory/unknowns`.
 - When the user sends a link, fetch it first, write a quick summary, then save it as a markdown file in `~/Dropbox/memory/links/` with a descriptive filename, the URL, the summary, and any context the user provided.
@@ -85,11 +86,11 @@
 
 - Correction = the user explicitly says a prior assumption, behavior, or result was wrong.
 - Project specific = tied to this repository's code, workflows, architecture, or conventions; otherwise store it in global memory.
-- After a meaningful correction from the user, update `.notes/lessons.md` if it is project specific; otherwise add it to global memory.
+- After a meaningful correction from the user, update the git repo root `.notes/lessons.md` if it is project specific; otherwise add it to global memory.
 - Write rules for yourself that prevent the same mistake.
 - Ruthlessly iterate on these lessons until the mistake rate drops.
-- Review lessons at session start for the relevant project.
-- After any major task, update `.notes/lessons.md` if the lesson is project specific.
+- Review lessons at session start in the relevant git repo root `.notes/lessons.md`.
+- After any major task, update the git repo root `.notes/lessons.md` if the lesson is project specific.
 
 ## Verification Before Done
 
