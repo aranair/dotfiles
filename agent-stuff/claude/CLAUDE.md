@@ -121,5 +121,15 @@
 
 - **Never use `rm`**. Always use `trash` for deleting files.
 - **Use `prek`** instead of `pre-commit` for all pre-commit hook operations.
+<<<<<<< Updated upstream
 - **Use `rg` instead of `grep`**. Ripgrep is faster, respects `.gitignore`, and has better defaults.
 - **Never chain `git commit` with other commands using `&&` or `;`**. The agent harness appends co-author trailer flags to the end of the full bash command line. When chained, those flags leak into the next command (for example, `git push` receives `-m` and fails with exit code 129). Always run `git commit` and `git push` as separate bash calls.
+=======
+- **Never use `grep`**. Use `rg` (ripgrep) for all exact string and regex searches.
+
+## Core Principles
+
+- **Simplicity First**: Make every change as simple as possible. Impact minimal code.
+- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
+- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+>>>>>>> Stashed changes

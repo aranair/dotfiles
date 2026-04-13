@@ -410,7 +410,7 @@ hi SpecialKey ctermbg=none
 hi SignColumn ctermbg=none
 
 hi TabLineFill ctermbg=None
-hi TabLine ctermbg=None
+hi TabLine ctermbg=None ctermfg=grey
 hi TabLineSel ctermfg=BLUE ctermbg=None
 hi StatusLine ctermbg=236 ctermfg=white cterm=none
 hi StatusLineNC ctermbg=234 ctermfg=245 cterm=none
