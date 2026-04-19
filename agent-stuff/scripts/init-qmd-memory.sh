@@ -37,6 +37,7 @@ Collections created:
   resources    -> <memory-root>/resources     (Books, videos, blog posts, links, and summaries)
   meeting-notes -> <memory-root>/meeting-notes (Meeting notes)
   research     -> <memory-root>/research      (Researched ideas)
+  investment   -> <memory-root>/investment    (Investment notes and research)
 EOF
 }
 
@@ -150,6 +151,7 @@ ideas|$MEMORY_ROOT/ideas|Brainstorms and ideas
 resources|$MEMORY_ROOT/resources|Books, videos, blog posts, links, and summaries
 meeting-notes|$MEMORY_ROOT/meeting-notes|Meeting notes
 research|$MEMORY_ROOT/research|Researched ideas
+investment|$MEMORY_ROOT/investment|Investment notes and research
 EOF
 
 if [[ "$RUN_UPDATE" -eq 1 ]]; then
@@ -176,3 +178,4 @@ echo "  ideas        -> $MEMORY_ROOT/ideas"
 echo "  resources    -> $MEMORY_ROOT/resources"
 echo "  meeting-notes -> $MEMORY_ROOT/meeting-notes"
 echo "  research     -> $MEMORY_ROOT/research"
+echo "  investment   -> $MEMORY_ROOT/investment"
