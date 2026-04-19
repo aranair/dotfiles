@@ -34,7 +34,7 @@ Collections created:
   notes        -> <memory-root>/notes    (Personal notes)
   aboutme      -> <memory-root>/aboutme       (Context and information about me)
   ideas        -> <memory-root>/ideas         (Brainstorms and ideas)
-  links        -> <memory-root>/links         (Saved links with descriptions)
+  resources    -> <memory-root>/resources     (Books, videos, blog posts, links, and summaries)
   meeting-notes -> <memory-root>/meeting-notes (Meeting notes)
   research     -> <memory-root>/research      (Researched ideas)
 EOF
@@ -147,7 +147,7 @@ lessons|$MEMORY_ROOT/lessons|Generic lessons from all agents
 notes|$MEMORY_ROOT/notes|Personal notes
 aboutme|$MEMORY_ROOT/aboutme|Context and information about me
 ideas|$MEMORY_ROOT/ideas|Brainstorms and ideas
-links|$MEMORY_ROOT/links|Saved links with descriptions
+resources|$MEMORY_ROOT/resources|Books, videos, blog posts, links, and summaries
 meeting-notes|$MEMORY_ROOT/meeting-notes|Meeting notes
 research|$MEMORY_ROOT/research|Researched ideas
 EOF
@@ -173,6 +173,6 @@ echo "  lessons      -> $MEMORY_ROOT/lessons"
 echo "  notes        -> $MEMORY_ROOT/notes"
 echo "  aboutme      -> $MEMORY_ROOT/aboutme"
 echo "  ideas        -> $MEMORY_ROOT/ideas"
-echo "  links        -> $MEMORY_ROOT/links"
+echo "  resources    -> $MEMORY_ROOT/resources"
 echo "  meeting-notes -> $MEMORY_ROOT/meeting-notes"
 echo "  research     -> $MEMORY_ROOT/research"

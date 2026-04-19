@@ -71,6 +71,7 @@
 - If you learn something about how I think, capture it in `~/Dropbox/memory/aboutme/`.
 - If I give you meeting notes, capture them in `~/Dropbox/memory/meeting-notes`.
 - If I give you research, research and capture them in `~/Dropbox/memory/research`
+- If I ask you to remember a book, video, blog post, article, paper, podcast, or similar resource with a short summary, save it in `~/Dropbox/memory/resources/`.
 - If you need a place for general long-term notes, put them in `~/Dropbox/memory/notes/`.
 - When unsure about something, query using qmd mcp if available. If that comes up with nothing, add a note in `~/Dropbox/memory/unknowns`.
 - When the user sends a link, fetch it first, write a quick summary, then save it as a markdown file in `~/Dropbox/memory/links/` with a descriptive filename, the URL, the summary, and any context the user provided.
