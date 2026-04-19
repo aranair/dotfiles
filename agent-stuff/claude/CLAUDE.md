@@ -68,13 +68,12 @@
 - When you write memory, briefly mention what you saved and where.
 - Capture generic lessons that are not project specific in `~/Dropbox/memory/lessons/`.
 - If I give you new ideas to brainstorm, capture them in a new markdown file in `~/Dropbox/memory/ideas/`.
-- If you learn something about how I think, capture it in `~/Dropbox/memory/aboutme/`.
+- If you learn something new about how I think, capture it in `~/Dropbox/memory/aboutme/`.
 - If I give you meeting notes, capture them in `~/Dropbox/memory/meeting-notes`.
-- If I give you research, research and capture them in `~/Dropbox/memory/research`
+- If I give you research, research and capture them in `~/Dropbox/memory/research` - if it is investing related capture them in `~/Dropbox/memory/investing`
 - If I ask you to remember a book, video, blog post, article, paper, podcast, or similar resource with a short summary, save it in `~/Dropbox/memory/resources/`.
 - If you need a place for general long-term notes, put them in `~/Dropbox/memory/notes/`.
 - When unsure about something, query using qmd mcp if available. If that comes up with nothing, add a note in `~/Dropbox/memory/unknowns`.
-- When the user sends a link, fetch it first, write a quick summary, then save it as a markdown file in `~/Dropbox/memory/links/` with a descriptive filename, the URL, the summary, and any context the user provided.
 
 ## Subagent Strategy
 
@@ -122,15 +121,5 @@
 
 - **Never use `rm`**. Always use `trash` for deleting files.
 - **Use `prek`** instead of `pre-commit` for all pre-commit hook operations.
-<<<<<<< Updated upstream
 - **Use `rg` instead of `grep`**. Ripgrep is faster, respects `.gitignore`, and has better defaults.
 - **Never chain `git commit` with other commands using `&&` or `;`**. The agent harness appends co-author trailer flags to the end of the full bash command line. When chained, those flags leak into the next command (for example, `git push` receives `-m` and fails with exit code 129). Always run `git commit` and `git push` as separate bash calls.
-=======
-- **Never use `grep`**. Use `rg` (ripgrep) for all exact string and regex searches.
-
-## Core Principles
-
-- **Simplicity First**: Make every change as simple as possible. Impact minimal code.
-- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
-- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
->>>>>>> Stashed changes

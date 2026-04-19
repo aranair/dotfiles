@@ -65,10 +65,35 @@ def listify(value: Any) -> list[str]:
     return [text] if text else []
 
 
+def yaml_quote(value: Any) -> str:
+    return json.dumps(str(value), ensure_ascii=False)
+
+
+def normalize_tags(value: Any) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        raw_tags = value
+    else:
+        text = str(value).strip()
+        if not text:
+            return []
+        raw_tags = text.split(",") if "," in text else [text]
+
+    tags: list[str] = []
+    for item in raw_tags:
+        tag = str(item).strip().lstrip("#")
+        if tag:
+            tags.append(tag)
+    return tags
+
+
 def render_markdown(payload: dict[str, Any]) -> str:
     title = str(payload["title"]).strip()
-    kind = str(payload.get("kind") or "other").strip().lower()
-    url = str(payload.get("url") or "").strip()
+    resource_type = str(payload.get("type") or payload.get("kind") or "other").strip().lower()
+    source = str(payload.get("source") or payload.get("url") or "").strip()
+    note_author = str(payload.get("author") or "Claude").strip()
+    tags = normalize_tags(payload.get("tags"))
     summary = str(payload.get("summary") or "").strip()
     why_saved = str(payload.get("why_saved") or "").strip()
     research_notes = listify(payload.get("research_notes"))
@@ -78,12 +103,20 @@ def render_markdown(payload: dict[str, Any]) -> str:
     if not summary:
         fail("'summary' is required")
 
-    lines: list[str] = [f"# {title}", "", f"- Type: {kind or 'other'}"]
-    if url:
-        lines.append(f"- URL: {url}")
-    lines.append(f"- Saved: {date.today().isoformat()}")
-
-    lines.extend(["", "## Summary", "", summary])
+    lines: list[str] = [
+        "---",
+        f"title: {yaml_quote(title)}",
+        f"created: {date.today().isoformat()}",
+        f"type: {yaml_quote(resource_type or 'other')}",
+    ]
+    if source:
+        lines.append(f"source: {yaml_quote(source)}")
+    if tags:
+        lines.append("tags:")
+        lines.extend([f"  - {yaml_quote(tag)}" for tag in tags])
+    if note_author:
+        lines.append(f"author: {yaml_quote(note_author)}")
+    lines.extend(["---", "", f"# {title}", "", "## Summary", "", summary])
 
     if why_saved:
         lines.extend(["", "## Why saved", "", why_saved])
@@ -112,7 +145,7 @@ def main() -> int:
         os.environ.get("MEMORY_ROOT", os.path.expanduser("~/Dropbox/memory"))
     ).expanduser()
     resources_root = memory_root / "resources"
-    bucket = choose_bucket(str(payload.get("kind") or "other"))
+    bucket = choose_bucket(str(payload.get("type") or payload.get("kind") or "other"))
     target_dir = resources_root / bucket
     target_dir.mkdir(parents=True, exist_ok=True)
 
